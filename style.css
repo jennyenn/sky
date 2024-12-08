@@ -8,10 +8,26 @@ body{
 	margin: 0;
 }
 
-.circle_shape{
+.circle_container{
+	position: relative;
 	width: 200px;
 	height: 200px;
-	background: linear-gradient(to top, #FFEEA3, #F3DDBE, #9BCBF2, #90BFF1);
+}
+
+.circle_shape{
+	position: absolute;
+	width: 100%;
+	height: 100%;
 	border-radius: 50%;
-	transition: background 2s ease-in-out;
+	transition: opacity 3s ease-in-out;
+}
+
+.top{
+	background: linear-gradient(to top, #FFEEA3, #F3DDBE, #9BCBF2, #90BFF1);
+	opacity: 1;
+}
+
+.bottom{
+	background: linear-gradient(to top, #87CCFF, #4E8CE9, #3A72CA, #3770C7);
+	opacity: 0;
 }

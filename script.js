@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const circle = document.querySelector('.circle_shape');
-	if (!circle) {
-	  console.error('Circle element not found!');
-	  return;
-	}
+	const topcircle = document.querySelector('.top');
+	const bottomcircle = document.querySelector('.bottom');
   
 
 const circlecolor = [
@@ -13,11 +10,23 @@ const circlecolor = [
 	'linear-gradient(to top, #FFBA4B, #BBA171, #858470, #363A3B)'
 ];
 
-let currentGradient =0;
+let currentGradient = 0;
+let isTopVisible = true;
 
-setInterval(()=>{
-	currentGradient = (currentGradient+1) % circlecolor.length;
-	circle.style.background = circlecolor[currentGradient];
+setInterval(() => {
+	currentGradient = (currentGradient + 1) % circlecolor.length;
+	
+	if (isTopVisible) {
+		bottomcircle.style.background = circlecolor[currentGradient];
+		bottomcircle.style.opacity = 1;
+		topcircle.style.opacity = 0;
+	}else {
+		topcircle.style.background = circlecolor[currentGradient];
+		topcircle.style.opacity = 1;
+		bottomcircle.style.opacity = 0;
+	}
+
+	isTopVisible = !isTopVisible;
 }, 3000);
 
 });
