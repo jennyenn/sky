@@ -1,0 +1,17 @@
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 20px;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.circle_shape{
+	width: 200px;
+	height: 200px;
+	background: linear-gradient(to top, #FFEEA3, #F3DDBE, #9BCBF2, #90BFF1);
+	border-radius: 50%;
+	transition: background 2s ease-in-out;
+}
