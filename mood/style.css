@@ -24,7 +24,7 @@ p{
 	flex-direction: wrap;
 	width: 30vw;
 	height: 10vh;
-	transform: translateX(60vw) translateY(4vw);
+	transform: translateX(58vw) translateY(6vw);
 	background: white;
 	/* border: 1px solid black; */
 	/* padding: 0.5vw; */
@@ -47,6 +47,10 @@ p{
 	transform: translateX(0vw) translateY(0vw) ;
 	z-index: 1;
 	position: fixed;
+}
+
+.right{
+	transform: translateX(87vw) translateY(0vw) ;
 }
 
 .button:hover{

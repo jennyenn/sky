@@ -6,7 +6,6 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 40px;
 }
 
 h1{
@@ -24,7 +23,7 @@ p{
 
 section{
 	width: 35vw;
-	transform: translateX(-20vw) translateY(0vw) ;
+	transform: translateX(20vw) translateY(10vw) ;
 }
 
 time{
@@ -35,6 +34,7 @@ time{
 
 .button{
 	background-color: white;
+	opacity: 0.5;
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
@@ -43,15 +43,12 @@ time{
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #AEA9A4;
+	transform: translateX(40vw) translateY(-20vw) ;
 }
 
 .left{
-	transform: translateX(-20vw) translateY(-20vw) ;
+	transform: translateX(-40vw) translateY(-20vw) ;
 }
-
-.right{
-	transform: translateX(20vw) translateY(-20vw) ;}
-
 
 .button:hover{
 	background-color: #282A2B;
@@ -59,4 +56,46 @@ time{
 
 body:has(.button:hover) a{
 	color: white;
+}
+
+.gradient_container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.gradient{
+	position: absolute;
+	width: 100%; 
+	height: 100%; 
+	transition: opacity 3s ease-in-out;
+}
+
+.top{
+	background: linear-gradient(to top,#8F8E99, #D5C6BF, #DAD2CF, #82A4BF);
+	opacity: 1;
+}
+.bottom{
+	background: linear-gradient(to top,#70768C, #E69F96, #D4DFE4, #7D91A9);
+	opacity: 0;
+}
+
+.gradient_text{
+	position: absolute;
+	top:5vw;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	text-align: center;
+	z-index: 10;
+}
+
+.location_text{
+	position: absolute;
+	bottom:5vw;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	text-align: center;
+	z-index: 10;
 }
