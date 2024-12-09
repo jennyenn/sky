@@ -33,6 +33,7 @@ time{
 }
 
 .button{
+	font-family: "Bricolage Grotesque", sans-serif;
 	background-color: white;
 	opacity: 0.5;
 	width: 40px;
@@ -81,7 +82,7 @@ time{
 }
 
 .gradient_text{
-	
+	font-family: "Bricolage Grotesque", sans-serif;
 	position: absolute;
 	top:5vw;
 	left: 50%;
