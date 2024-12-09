@@ -66,13 +66,13 @@ p:nth-of-type(3){
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #AEA9A4;
-	transform: translateX(0vw) translateY(0vw) ;
+	transform: translateX(1vw) translateY(0vw) ;
 	z-index: 1;
 	position: fixed;
 }
 
 .right{
-	transform: translateX(87vw) translateY(0vw) ;
+	transform: translateX(88vw) translateY(0vw) ;
 }
 
 .button:hover{

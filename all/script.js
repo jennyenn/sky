@@ -79,23 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const shapes = [
 		'shape-oval', 
+		'shape-oval', 
 		'shape-half-circle', 
 		'shape-square', 
 		'shape-diamond',
 		'shape-circle',
 		'shape-square', 
-		'shape-pentagon', 
+		'shape-hexagon', 
 		'shape-waterdrop', 
 		'shape-half-circle', 
 		'shape-circle', 
 		'shape-circle', 
-		'shape-pentagon', 
-		'shape-pentagon', 
+		'shape-hexagon',  
 		'shape-oval', 
+		'shape-square', 
 		'shape-half-circle', 
 	];
 
 	const shapeTexts = [
+		'Calm',
 		'Calm', 
 		'Tired', 
 		'Neutral', 
@@ -132,15 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				text.style.top = `${event.clientY}px`;
 			});
 
-			// 每三秒改變幾何形狀和文字
 			setInterval(() => {
-				// 移除當前形狀
 				cursor.classList.remove(shapes[currentShapeIndex]);
-				// 更新到下一個形狀
 				currentShapeIndex = (currentShapeIndex + 1) % shapes.length;
-				// 添加新形狀
 				cursor.classList.add(shapes[currentShapeIndex]);
-				// 更新文字
 				text.textContent = shapeTexts[currentShapeIndex];
 			}, 3000);
 
