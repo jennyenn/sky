@@ -135,6 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		'linear-gradient(to top, #646676, #1E2129, #050810, #000109)'
 	];
 
+	//	Hexagon
+	//	Hexagon
+	//	Hexagon
+	const hexagonColors = [
+		'linear-gradient(to top, #DBDAD3, #D9DAD2, #ECECE8, #F5F8F5)',
+		'linear-gradient(to top, #A19580, #ACA991, #A8B4AD, #8C959B)',
+		'linear-gradient(to top, #E0C8AC, #EEE7BD, #73838D, #73838D)'
+	];
+
+
 
 	const topcircle = document.querySelector('.circle_top');
 	const bottomcircle = document.querySelector('.circle_bottom');
@@ -154,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const bottomstar = document.querySelector('.star_bottom');
 	const topcurve = document.querySelector('.curve_top');
 	const bottomcurve = document.querySelector('.curve_bottom');
+	const tophexagon = document.querySelector('.hexagon_top');
+	const bottomhexagon = document.querySelector('.hexagon_bottom');
 
 
 	createShapeAnimation(topcircle, bottomcircle, circleColors);
@@ -165,5 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	createShapeAnimation(topsquare, bottomsquare, squareColors);
 	createShapeAnimation(topstar, bottomstar, starColors);
 	createShapeAnimation(topcurve, bottomcurve, curveColors);
+	createShapeAnimation(tophexagon, bottomhexagon, hexagonColors);
 
 });

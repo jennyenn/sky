@@ -193,7 +193,7 @@ h1{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	transform: translateX(-30vw) translateY(-35vw);
+	transform: translateX(-35vw) translateY(-35vw);
 	width: auto;
 }
 
@@ -354,6 +354,43 @@ h1{
 	justify-content: center;
 	align-items: center;
 	gap: 1vw;
-	transform: translateX(70vw) translateY(-115vw);
+	transform: translateX(65vw) translateY(-115vw);
+	width: auto;
+}
+
+
+/* Hexagon */
+/* Hexagon */
+/* Hexagon */
+.hexagon_container{
+	width: auto;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.hexagon_shape{
+	position: absolute;
+	height: 25vw; /* adjust to control the size  */
+	aspect-ratio: 1/cos(30deg);
+	clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+	transition: opacity 3s ease-in-out;
+}
+.hexagon_top{
+	background: linear-gradient(to top, #DBDAD3, #D9DAD2, #ECECE8, #F5F8F5);
+	opacity: 1;
+}
+.hexagon_bottom{
+	background: linear-gradient(to top, #A19580, #ACA991, #A8B4AD, #8C959B);
+	opacity: 0;
+}
+
+.unmotivated{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1vw;
+	transform: translateX(85vw) translateY(-95vw);
 	width: auto;
 }
