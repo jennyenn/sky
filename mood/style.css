@@ -19,20 +19,42 @@ h1{
 }
 
 p{
+	position: absolute;
 	font-family: "Bricolage Grotesque", sans-serif;
 	display: flex;
 	flex-direction: wrap;
 	width: 30vw;
 	height: 10vh;
-	transform: translateX(58vw) translateY(6vw);
+	transform: translateX(130vw) translateY(6vw);
 	background: white;
-	/* border: 1px solid black; */
-	/* padding: 0.5vw; */
 }
+
+p:nth-of-type(2){
+	position: absolute;
+	font-family: "Bricolage Grotesque", sans-serif;
+	display: flex;
+	flex-direction: wrap;
+	width: 10vw;
+	height: 10vh;
+	transform: translateX(80vw) translateY(35vw);
+	background: white;
+}
+
+p:nth-of-type(3){
+	position: absolute;
+	font-family: "Bricolage Grotesque", sans-serif;
+	display: flex;
+	flex-direction: wrap;
+	width: 4vw;
+	height: 10vh;
+	transform: translateX(52vw) translateY(5vw);
+	background: white;
+}
+
 
 .crazyshapes{
 	width: 100%;
-	transform: translateX(10vw);
+	transform: translateX(0vw);
 }
 
 .button{
