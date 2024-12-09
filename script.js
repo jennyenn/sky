@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		  }
 	
 		  isTopVisible = !isTopVisible;
-		}, 3000);
+		}, 3100);
 	  }
 
 	// circle
@@ -93,6 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		'linear-gradient(to top, #C0D7E4, #D0E3EA, #E3F3F9, #ADD4FA)'
 	];
 
+	//	halfcircle
+	//	halfcircle
+	//	halfcircle
+	const halfcircleColors = [
+		'linear-gradient(to top, #E4D7C1, #CCD2D2, #9CBAD5, #487ABC)',
+		'linear-gradient(to top, #FFD386, #C0BBB1, #7C868E, #7C868E)',
+		'linear-gradient(to top, #5E87C7, #6B92D4, #709CE8, #6391E1)'
+	];
+
 	const topcircle = document.querySelector('.circle_top');
 	const bottomcircle = document.querySelector('.circle_bottom');
 	const topwaterdrop = document.querySelector('.waterdrop_top');
@@ -103,6 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const bottomtriangle = document.querySelector('.triangle_bottom');
 	const toprhombus = document.querySelector('.rhombus_top');
 	const bottomrhombus = document.querySelector('.rhombus_bottom');
+	const tophalfcircle = document.querySelector('.half-circle_top');
+	const bottomhalfcircle = document.querySelector('.half-circle_bottom');
 
 
 	createShapeAnimation(topcircle, bottomcircle, circleColors);
@@ -110,5 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	createShapeAnimation(topoval, bottomoval, ovalColors);
 	createShapeAnimation(toptriangle, bottomtriangle, triangleColors);
 	createShapeAnimation(toprhombus, bottomrhombus, rhombusColors);
+	createShapeAnimation(tophalfcircle, bottomhalfcircle, halfcircleColors);
 
 });

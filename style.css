@@ -33,6 +33,7 @@ body{
 .happy{
 	display: flex;
 	align-items: end;
+	width: auto;
 }
 
 .happy h1{
@@ -70,6 +71,7 @@ body{
 	align-items: center;
 	gap: 1vw;
 	transform: translateX(-0vw) translateY(-7vw);
+	width: auto;
 }
 
 
@@ -107,6 +109,7 @@ body{
 	align-items: center;
 	gap: 1vw;
 	transform: translateX(-15vw) translateY(-10vw);
+	width: auto;
 }
 
 .hopeful h1{
@@ -123,7 +126,7 @@ body{
 	height: 10vw;
 }
 .rhombus_shape{
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	transform: rotate(45deg); 
@@ -143,6 +146,7 @@ body{
 	display: flex;
 	justify-content: left;
 	transform: translateX(35vw) translateY(-52vw);
+	width: auto;
 }
 
 .grateful h1{
@@ -153,7 +157,7 @@ body{
 /* waterdrop */
 /* waterdrop */
 .waterdrop_container{
-	position: relative;
+	position: absolute;
 	width: 7vw;
 	height: 7vw;
 }
@@ -174,9 +178,48 @@ body{
 }
 
 .sad{
-	width: 100%;
 	display: flex;
-	justify-content:flex-start;
-	gap: 1vw;
-	transform: translateX(5vw) translateY(-30vw);
+	flex-direction: row;
+	justify-content:right;
+	transform: translateX(-80vw) translateY(-30vw);
+	width: auto;
 }
+
+.sad h1{
+	transform: translateX(3vw) ;
+}
+
+/* half-circle */
+/* half-circle */
+/* half-circle */
+.half-circle_container{
+	position: absolute;
+	width: 24vw;
+	height: 12vw;
+}
+.half-circle_shape{
+	position: absolute;
+	width: 100%; 
+	height: 100%; 
+	border-top-left-radius: 12vw; 
+	border-top-right-radius: 12vw; 
+	overflow: hidden;
+	transition: opacity 3s ease-in-out;
+}
+.half-circle_top{
+	background: linear-gradient(to top, #70768C, #E69F96, #D4DFE4, #7D91A9);
+	opacity: 1;
+}
+.half-circle_bottom{
+	background: linear-gradient(to top, #839494, #C9CFC4, #8FA4AD, #A4A9A7);
+	opacity: 0;
+}
+
+.tired{
+	display: flex;
+	justify-content: right;
+	transform: translateX(-10vw) translateY(-35vw);
+	width: auto;
+}
+
+
