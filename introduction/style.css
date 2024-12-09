@@ -22,9 +22,18 @@ p{
 	margin-top: 1vw;
 }
 
+a{
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-weight: 200;
+}
+
+a:hover{
+	color: #AEA9A4;
+}
+
 section{
 	width: 35vw;
-	transform: translateX(-20vw) translateY(0vw) ;
+	transform: translateX(-10vw) translateY(-2vw) ;
 }
 
 time{
@@ -33,7 +42,20 @@ time{
 	font-size: small;
 }
 
+blockquote{
+	position: absolute;
+	background-color: white;
+	width: 16vw;
+	height: 16vw;
+	display: flex;
+	flex-direction: column;
+	padding: 5vw;
+	justify-content: space-between;
+	transform: rotate(10deg) translateX(20vw)translateY(-2vw) ;
+}
+
 .button{
+	position: absolute;
 	background-color: white;
 	width: 40px;
 	height: 40px;
@@ -46,11 +68,11 @@ time{
 }
 
 .left{
-	transform: translateX(-20vw) translateY(-20vw) ;
+	transform: translateX(-40vw) translateY(-20vw) ;
 }
 
 .right{
-	transform: translateX(20vw) translateY(-20vw) ;}
+	transform: translateX(40vw) translateY(-20vw) ;}
 
 
 .button:hover{
@@ -59,4 +81,25 @@ time{
 
 body:has(.button:hover) a{
 	color: white;
+}
+
+.sticker{
+	position: absolute;
+	background: #ECA9BA;
+	width: 80px;
+	height: 80px;
+	position: relative;
+	text-align: center;
+	transform: rotate(20deg) scale(0.5) translateX(5vw) translateY(-14vw);
+}
+
+.sticker::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 80px;
+	width: 80px;
+	background: #ECA9BA;
+	transform: rotate(135deg);
 }

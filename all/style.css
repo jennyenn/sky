@@ -54,7 +54,7 @@ time{
 	background-color: #282A2B;
 }
 
-body:has(.button:hover) a{
+.button:hover > a:nth-child(1){
 	color: white;
 }
 
@@ -81,7 +81,7 @@ body:has(.button:hover) a{
 }
 
 .gradient_text{
-	font-family: "Bricolage Grotesque", sans-serif;
+	
 	position: absolute;
 	top:5vw;
 	left: 50%;
