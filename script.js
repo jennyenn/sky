@@ -118,6 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		'linear-gradient(to top, #DEF6FF, #C3D9F4, #F2DBD7, #7692B6)'
 	];
 
+	//	star
+	//	star
+	//	star
+	const starColors = [
+		'linear-gradient(to top, #99CBE4, #7DB9DE, #6097CB, #416EA7)',
+		'linear-gradient(to top, #F3B07D, #FFFEA6, #F4EBD9, #93AEDA)',
+		'linear-gradient(to top, #5B506F, #3A364E, #2C2A39, #2A2A28)'
+	];
+
 	const topcircle = document.querySelector('.circle_top');
 	const bottomcircle = document.querySelector('.circle_bottom');
 	const topwaterdrop = document.querySelector('.waterdrop_top');
@@ -132,6 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const bottomhalfcircle = document.querySelector('.half-circle_bottom');
 	const topsquare = document.querySelector('.square_top');
 	const bottomsquare = document.querySelector('.square_bottom');
+	const topstar = document.querySelector('.star_top');
+	const bottomstar = document.querySelector('.star_bottom');
 
 
 	createShapeAnimation(topcircle, bottomcircle, circleColors);
@@ -141,5 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	createShapeAnimation(toprhombus, bottomrhombus, rhombusColors);
 	createShapeAnimation(tophalfcircle, bottomhalfcircle, halfcircleColors);
 	createShapeAnimation(topsquare, bottomsquare, squareColors);
+	createShapeAnimation(topstar, bottomstar, starColors);
 
 });

@@ -1,7 +1,7 @@
 body{
-	height: 100vh;
+	height: 0%;
 	margin: 60px;
-	overflow-x: auto; /* Scroll horizontally! */
+	overflow-x: auto;
 	overflow-y: hidden;
 	background-color: #F9F8F7;
 }
@@ -256,3 +256,45 @@ body{
 }
 
 
+
+/* star */
+/* star */
+/* star */
+.star_container{
+	position: relative;
+	width: 24vw;
+	height: 24vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.star_shape{
+	position: absolute;
+	width: 25vw;  
+	aspect-ratio: 1;
+	clip-path: polygon(50% 0,
+	calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+	calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+	calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+	calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
+); 
+	transition: opacity 3s ease-in-out;
+}
+.star_top{
+	background: linear-gradient(to top, #F8FFFB, #D0E7FC, #92B7EF, #7B9DDC);
+	opacity: 1;
+}
+.star_bottom{
+	background: linear-gradient(to top, #939391, #D1A99A, #AFB1AE, #98A4AE);
+	opacity: 0;
+}
+
+.energetic{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1vw;
+	transform: translateX(60vw) translateY(-75vw);
+	width: auto;
+}
