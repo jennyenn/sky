@@ -27,7 +27,7 @@ a{
 	font-weight: 200;
 }
 
-a:hover{
+blockquote a:hover{
 	color: #AEA9A4;
 }
 
@@ -79,7 +79,7 @@ blockquote{
 	background-color: #282A2B;
 }
 
-body:has(.button:hover) a{
+.button:hover a {
 	color: white;
 }
 
