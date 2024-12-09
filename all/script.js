@@ -34,7 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		'linear-gradient(to top, #E0C8AC, #EEE7BD, #73838D, #73838D)',
 		'linear-gradient(to top, #E9E8C6, #ABB4B3, #96C2E5, #9BA0A5)',
 		'linear-gradient(to top, #839494, #C9CFC4, #8FA4AD, #A4A9A7)',
-		'linear-gradient(to top, #FFF1D0, #E5E8E3, #C9D6E4, #9FB5D6)'
+		'linear-gradient(to top, #FFF1D0, #E5E8E3, #C9D6E4, #9FB5D6)',
+		'linear-gradient(to top, #87CCFF, #4E8CE9, #3A72CA, #3770C7)',
+		'linear-gradient(to top, #DBDAD3, #D9DAD2, #ECECE8, #F5F8F5)',
+		'linear-gradient(to top, #A19580, #ACA991, #A8B4AD, #8C959B)',
+		'linear-gradient(to top, #D9C99C, #D3D4B1, #B5CEC9, #638AB6)',
+		'linear-gradient(to top, #97A199, #7E969E, #B2B2B0, #B0AEAA)',
 	];
 
 	const squareTexts =[
@@ -47,7 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		'2024-11-24	3:56 PM',
 		'2024-11-24	3:08 PM',
 		'2024-11-24	1:17 PM',
-		'2024-11-23	4:23 PM'
+		'2024-11-23	4:23 PM',
+		'2024-11-23	3:07 PM',
+		'2024-11-21	1:18 PM',
+		'2024-11-19	4:15 PM',
+		'2024-11-19	3:26 PM',
+		'2024-11-19	1:39 PM',
 	];
 
 	const locationTexts =[
@@ -56,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		'Jersey City (home)',
 		'Central Park',
 		'Time Square',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
 		'Jersey City (home)',
 		'Jersey City (home)',
 		'Jersey City (home)',
@@ -73,6 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		'shape-waterdrop', 
 		'shape-half-circle', 
 		'shape-circle', 
+		'shape-circle', 
+		'shape-pentagon', 
+		'shape-pentagon', 
+		'shape-oval', 
+		'shape-half-circle', 
 	];
 
 	const shapeTexts = [
@@ -86,6 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		'Sad',
 		'Tired',
 		'Happy',
+		'Happy',
+		'Unmotivated',
+		'Calm',
+		'Neutral', 
+		'Tired', 
 	];
 
 
