@@ -39,10 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		'linear-gradient(to top, #DBDAD3, #D9DAD2, #ECECE8, #F5F8F5)',
 		'linear-gradient(to top, #A19580, #ACA991, #A8B4AD, #8C959B)',
 		'linear-gradient(to top, #D9C99C, #D3D4B1, #B5CEC9, #638AB6)',
-		'linear-gradient(to top, #97A199, #7E969E, #B2B2B0, #B0AEAA)',
+		'linear-gradient(to top, #97A199, #7E969E, #B2B2B0, #AAB4BC)',
+		'linear-gradient(to top, #DEA181, #E8D3B1, #AAB4BC, #B0AEAA)',
+		'linear-gradient(to top, #F8FFFB, #D0E7FC, #92B7EF, #7B9DDC)',
+		'linear-gradient(to top, #FFAF5A, #D6BD91, #B2AFA2, #91959B)',
+		'linear-gradient(to top, #B9AFA5, #D1D7CD, #A1CFF8, #75AEF5)',
 	];
 
 	const squareTexts =[
+		'2024-12-01	4:19 PM',
 		'2024-12-01	4:19 PM',
 		'2024-11-30	4:28 PM',
 		'2024-11-27	3:09 PM',
@@ -58,14 +63,26 @@ document.addEventListener('DOMContentLoaded', () => {
 		'2024-11-19	4:15 PM',
 		'2024-11-19	3:26 PM',
 		'2024-11-19	1:39 PM',
+		'2024-11-18	4:56 PM',
+		'2024-11-12	4:34 PM',
+		'2024-10-26	3:41 AM',
+		'2024-10-24	5:58 PM',
+		'2024-10-23	5:36 PM',
 	];
 
 	const locationTexts =[
 		'Jersey City (home)',
 		'Jersey City (home)',
 		'Jersey City (home)',
+		'Jersey City (home)',
 		'Central Park',
 		'Time Square',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
+		'Jersey City (home)',
 		'Jersey City (home)',
 		'Jersey City (home)',
 		'Jersey City (home)',
@@ -91,9 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		'shape-circle', 
 		'shape-circle', 
 		'shape-hexagon',  
+		'shape-hexagon',  
 		'shape-oval', 
 		'shape-square', 
-		'shape-half-circle', 
+		'shape-half-circle',
+		'shape-diamond',
+		'shape-star',
+		'shape-oval', 
+		'shape-circle',
 	];
 
 	const shapeTexts = [
@@ -110,9 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		'Happy',
 		'Happy',
 		'Unmotivated',
+		'Unmotivated',
 		'Calm',
 		'Neutral', 
 		'Tired', 
+		'Grateful', 
+		'Energetic', 
+		'Calm', 
+		'Happy', 
 	];
 
 
