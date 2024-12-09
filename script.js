@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	// waterdrop
 	// waterdrop
 	const waterdropColors = [
-		'linear-gradient(to top, #D8C1A8, #E1CAAE, #FFF5D3, #DAD9CE)',
-		'linear-gradient(to top, #C0D7E4, #D0E3EA, #E3F3F9, #ADD4FA)'
+		'linear-gradient(-45deg, #D8C1A8, #E1CAAE, #FFF5D3, #DAD9CE)',
+		'linear-gradient(-45deg, #C0D7E4, #D0E3EA, #E3F3F9, #ADD4FA)'
 	];
 
 	//	halfcircle
@@ -122,10 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	//	star
 	//	star
 	const starColors = [
-		'linear-gradient(to top, #99CBE4, #7DB9DE, #6097CB, #416EA7)',
-		'linear-gradient(to top, #F3B07D, #FFFEA6, #F4EBD9, #93AEDA)',
-		'linear-gradient(to top, #5B506F, #3A364E, #2C2A39, #2A2A28)'
+		'linear-gradient(-45deg, #99CBE4, #7DB9DE, #6097CB, #416EA7)',
+		'linear-gradient(-45deg, #F3B07D, #FFFEA6, #F4EBD9, #93AEDA)',
+		'linear-gradient(-45deg, #5B506F, #3A364E, #2C2A39, #2A2A28)'
 	];
+
+	//	Curved Rectangle
+	//	Curved Rectangle
+	//	Curved Rectangle
+	const curveColors = [
+		'linear-gradient(to top, #A9A093, #979895, #8B9095, #85898E)',
+		'linear-gradient(to top, #646676, #1E2129, #050810, #000109)'
+	];
+
 
 	const topcircle = document.querySelector('.circle_top');
 	const bottomcircle = document.querySelector('.circle_bottom');
@@ -143,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const bottomsquare = document.querySelector('.square_bottom');
 	const topstar = document.querySelector('.star_top');
 	const bottomstar = document.querySelector('.star_bottom');
+	const topcurve = document.querySelector('.curve_top');
+	const bottomcurve = document.querySelector('.curve_bottom');
 
 
 	createShapeAnimation(topcircle, bottomcircle, circleColors);
@@ -153,5 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	createShapeAnimation(tophalfcircle, bottomhalfcircle, halfcircleColors);
 	createShapeAnimation(topsquare, bottomsquare, squareColors);
 	createShapeAnimation(topstar, bottomstar, starColors);
+	createShapeAnimation(topcurve, bottomcurve, curveColors);
 
 });

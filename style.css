@@ -6,6 +6,10 @@ body{
 	background-color: #F9F8F7;
 }
 
+h1{
+	z-index: -1;
+}
+
 /* circle */
 /* circle */
 /* circle */
@@ -32,12 +36,14 @@ body{
 
 .happy{
 	display: flex;
-	align-items: end;
-	width: auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(-30vw) translateY(0vw);
 }
 
 .happy h1{
-	transform: translateX(-40px);
+	transform: translateY(-5vw);
 }
 
 /* oval */
@@ -45,8 +51,8 @@ body{
 /* oval */
 .oval_container{
 	position: relative;
-	width: 25vw;
-	height: 12.5vw;
+	width: 27vw;
+	height: 14vw;
 }
 .oval_shape{
 	position: absolute;
@@ -65,23 +71,26 @@ body{
 }
 
 .calm{
-	width: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	gap: 1vw;
-	transform: translateX(-0vw) translateY(-7vw);
+	transform: translateX(-0vw) translateY(-10vw);
 	width: auto;
 }
 
+.calm h1{
+	transform: translateY(-5vw);
+}
 
 /* triangle */
 /* triangle */
 /* triangle */
 .triangle_container{
 	position: relative;
-	width: 15vw;
-	height: 12vw;
+	width: 18vw;
+	height: 14vw;
 }
 .triangle_shape{
 	position: absolute;
@@ -103,17 +112,17 @@ body{
 }
 
 .hopeful{
-	width: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	gap: 1vw;
-	transform: translateX(-15vw) translateY(-10vw);
+	transform: translateX(-15vw) translateY(-15vw);
 	width: auto;
 }
 
 .hopeful h1{
-	transform: translateX(-5vw) ;
+	transform: translateY(-5vw) ;
 }
 
 
@@ -142,15 +151,16 @@ body{
 }
 
 .grateful{
-	width: 100%;
 	display: flex;
-	justify-content: left;
-	transform: translateX(35vw) translateY(-52vw);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(-5vw) translateY(-57vw);
 	width: auto;
 }
 
 .grateful h1{
-	transform: translateX(1vw) ;
+	transform: translateY(-4vw);
 }
 
 /* waterdrop */
@@ -158,36 +168,35 @@ body{
 /* waterdrop */
 .waterdrop_container{
 	position: absolute;
-	width: 7vw;
-	height: 7vw;
+	width: 9vw;
+	height: 9vw;
 }
 .waterdrop_shape{
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	border-radius:0% 100% 100% 100%;
+	transform: rotate(45deg); 
 	transition: opacity 3s ease-in-out;
 }
 .waterdrop_top{
-	background: linear-gradient(to top, #E9E8C6, #ABB4B3, #96C2E5, #9BA0A5);
+	background: linear-gradient(-45deg, #E9E8C6, #ABB4B3, #96C2E5, #9BA0A5);
 	opacity: 1;
 }
 .waterdrop_bottom{
-	background: linear-gradient(to top, #E29D67, #CDC0AD, #8298AB, #355684);
+	background: linear-gradient(-45deg, #E29D67, #CDC0AD, #8298AB, #355684);
 	opacity: 0;
 }
 
 .sad{
 	display: flex;
-	flex-direction: row;
-	justify-content:right;
-	transform: translateX(-80vw) translateY(-30vw);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(-30vw) translateY(-35vw);
 	width: auto;
 }
 
-.sad h1{
-	transform: translateX(3vw) ;
-}
 
 /* half-circle */
 /* half-circle */
@@ -217,8 +226,10 @@ body{
 
 .tired{
 	display: flex;
-	justify-content: right;
-	transform: translateX(-10vw) translateY(-35vw);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(20vw) translateY(-35vw);
 	width: auto;
 }
 
@@ -250,11 +261,14 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 1vw;
-	transform: translateX(65vw) translateY(-65vw);
+	align-items: center;
+	transform: translateX(30vw) translateY(-72vw);
 	width: auto;
 }
 
+.neutral h1{
+	transform: translateY(-5vw);
+}
 
 
 /* star */
@@ -270,7 +284,7 @@ body{
 }
 .star_shape{
 	position: absolute;
-	width: 25vw;  
+	width: 20vw;  
 	aspect-ratio: 1;
 	clip-path: polygon(50% 0,
 	calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
@@ -278,14 +292,15 @@ body{
 	calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
 	calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
 ); 
+	transform: rotate(45deg); 
 	transition: opacity 3s ease-in-out;
 }
 .star_top{
-	background: linear-gradient(to top, #F8FFFB, #D0E7FC, #92B7EF, #7B9DDC);
+	background: linear-gradient(-45deg, #F8FFFB, #D0E7FC, #92B7EF, #7B9DDC);
 	opacity: 1;
 }
 .star_bottom{
-	background: linear-gradient(to top, #939391, #D1A99A, #AFB1AE, #98A4AE);
+	background: linear-gradient(-45deg, #939391, #D1A99A, #AFB1AE, #98A4AE);
 	opacity: 0;
 }
 
@@ -294,7 +309,51 @@ body{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	transform: translateX(52vw) translateY(-80vw);
+	width: auto;
+}
+
+.energetic h1{
+	transform: translateY(-12vw);
+}
+
+
+
+/* curve */
+/* curve */
+/* curve */
+.curve_container{
+	width: auto;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.curve_shape{
+	position: absolute;
+	--c: 85; /* control the curvature (a percentage value without unit bigger than 50%)*/
+	width: 24vw;
+	aspect-ratio: 3/2;
+	background: #a7237b;
+	mask: radial-gradient(calc(var(--c)*1%) 100% at 50% calc(100% + 100%*cos(asin(50/var(--c)))),#0000 calc(100% - 1px),#000);
+	clip-path: ellipse(calc(var(--c)*1%) 100% at bottom);
+	transition: opacity 3s ease-in-out;
+}
+.curve_top{
+	background: linear-gradient(to top, #A9A093, #979895, #8B9095, #85898E);
+	opacity: 1;
+}
+.curve_bottom{
+	background: linear-gradient(to top, #646676, #1E2129, #050810, #000109);
+	opacity: 0;
+}
+
+.overwhelming{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	gap: 1vw;
-	transform: translateX(60vw) translateY(-75vw);
+	transform: translateX(70vw) translateY(-115vw);
 	width: auto;
 }
