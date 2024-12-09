@@ -62,11 +62,63 @@ document.addEventListener('DOMContentLoaded', () => {
 		'Jersey City (home)',
 	];
 
+	const shapes = [
+		'shape-oval', 
+		'shape-half-circle', 
+		'shape-square', 
+		'shape-diamond',
+		'shape-circle',
+		'shape-square', 
+		'shape-pentagon', 
+		'shape-waterdrop', 
+		'shape-half-circle', 
+		'shape-circle', 
+	];
+
+	const shapeTexts = [
+		'Calm', 
+		'Tired', 
+		'Neutral', 
+		'Grateful',
+		'Happy',
+		'Neutral',
+		'Anxious',
+		'Sad',
+		'Tired',
+		'Happy',
+	];
+
+
 	const topsquare = document.querySelector('.top');
 	const bottomsquare = document.querySelector('.bottom');
 	const gradientText = document.querySelector('.gradient_text');
 	const locationText = document.querySelector('.location_text');
 
 	createShapeAnimation(topsquare, bottomsquare, gradientText, squareColors, squareTexts,locationText, locationTexts);
+
+	const cursor = document.querySelector('.cursor');
+	const text = document.querySelector('.text');
+	let currentShapeIndex = 0;
+
+	document.addEventListener('mousemove', (event) => {
+				cursor.style.left = `${event.clientX}px`;
+				cursor.style.top = `${event.clientY}px`;
+				text.style.left = `${event.clientX}px`;
+				text.style.top = `${event.clientY}px`;
+			});
+
+			// 每三秒改變幾何形狀和文字
+			setInterval(() => {
+				// 移除當前形狀
+				cursor.classList.remove(shapes[currentShapeIndex]);
+				// 更新到下一個形狀
+				currentShapeIndex = (currentShapeIndex + 1) % shapes.length;
+				// 添加新形狀
+				cursor.classList.add(shapes[currentShapeIndex]);
+				// 更新文字
+				text.textContent = shapeTexts[currentShapeIndex];
+			}, 3000);
+
+
 
 });
