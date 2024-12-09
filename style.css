@@ -24,6 +24,7 @@ p{
 
 section{
 	width: 35vw;
+	transform: translateX(20vw) translateY(10vw) ;
 }
 
 time{
@@ -42,6 +43,7 @@ time{
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #AEA9A4;
+	transform: translateX(10vw) translateY(-15vw) ;
 }
 
 .button:hover{
@@ -54,9 +56,9 @@ body:has(.button:hover) a{
 
 .gradient_container{
 	position: absolute;
-	transform: translateX(-20px) translateX(-20px) ;
-	width: 80px;
-	height: 80px;
+	transform: translateX(-25vw) translateY(-5vw) ;
+	width: 400px;
+	height: 100vh;
 	z-index: -1;
 }
 .gradient{
@@ -65,6 +67,7 @@ body:has(.button:hover) a{
 	height: 100%; 
 	transition: opacity 3s ease-in-out;
 }
+
 .top{
 	background: linear-gradient(to top, #D3D3C6, #CBDEE1, #A8D1F1, #5B87C6);
 	opacity: 1;
