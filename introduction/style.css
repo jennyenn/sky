@@ -24,7 +24,7 @@ p{
 
 a{
 	font-family: "Bricolage Grotesque", sans-serif;
-	font-weight: 200;
+	font-weight: 300;
 }
 
 blockquote a:hover{
@@ -52,6 +52,10 @@ blockquote{
 	padding: 5vw;
 	justify-content: space-between;
 	transform: rotate(10deg) translateX(20vw)translateY(-2vw) ;
+}
+
+strong{
+	font-weight: bolder;
 }
 
 .button{
