@@ -35,6 +35,28 @@ p{
 	transform: translateX(10vw);
 }
 
+.button{
+	background-color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #AEA9A4;
+	transform: translateX(0vw) translateY(0vw) ;
+	z-index: 1;
+	position: fixed;
+}
+
+.button:hover{
+	background-color: #282A2B;
+}
+
+body:has(.button:hover) a{
+	color: white;
+}
+
 /* circle */
 /* circle */
 /* circle */
