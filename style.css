@@ -1,13 +1,29 @@
 body{
-	height: 0%;
+	width: 90%;
+	height: 100vh;
 	margin: 60px;
 	overflow-x: auto;
 	overflow-y: hidden;
-	background-color: #F9F8F7;
+	background-color: #f8f2ec;
+	display: flex;
 }
 
 h1{
 	z-index: -1;
+}
+
+p{
+	display: flex;
+	flex-direction: wrap;
+	width: 30vw;
+	height: 10vh;
+	transform: translateX(60vw) translateY(4vw);
+	background: white;
+}
+
+.crazyshapes{
+	width: 100%;
+	transform: translateX(10vw);
 }
 
 /* circle */
@@ -354,7 +370,7 @@ h1{
 	justify-content: center;
 	align-items: center;
 	gap: 1vw;
-	transform: translateX(65vw) translateY(-115vw);
+	transform: translateX(60vw) translateY(-115vw);
 	width: auto;
 }
 
