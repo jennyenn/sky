@@ -1,100 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
-
+/*
+	Layout: one wide canvas (.crazyshapes) that scrolls sideways and is
+	vertically centered in the window. Everything inside is sized and placed
+	with --u, a unit based on the window height, so the composition keeps its
+	proportions on any screen.
+*/
+:root{
+	--u: 1.05vh;
+}
+@supports (height: 1svh){
+	:root{ --u: 1.05svh; }
+}
 
 body{
-	width: 90%;
 	height: 100vh;
-	margin: 80px;
+	height: 100svh;
 	overflow-x: auto;
 	overflow-y: hidden;
 	background-color: #f8f2ec;
+	color: #282A2B;
+	font-family: "Bricolage Grotesque", sans-serif;
 	display: flex;
+	align-items: center;
+}
+
+.crazyshapes{
+	position: relative;
+	flex: none;
+	width: calc(262 * var(--u));
+	height: calc(76 * var(--u));
+	margin: 0 clamp(72px, 8vw, 128px);
+}
+
+/* Keeps the right-hand margin when scrolled to the end */
+body::after{
+	content: "";
+	flex: none;
+	width: 1px;
+	height: 1px;
+}
+
+/* Every mood: absolutely placed, label centered on the shape */
+.crazyshapes > div{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 h1{
-	font-family: "Bricolage Grotesque", sans-serif;
+	position: absolute;
+	left: 50%;
+	top: 60%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
 	font-weight: 400;
-	z-index: -1;
+	font-size: max(10px, calc(1.9 * var(--u)));
+	letter-spacing: 0.02em;
+	color: rgba(40, 42, 43, 0.45);
+	white-space: nowrap;
+	pointer-events: none;
 }
 
-p{
+/* Notes */
+.note{
 	position: absolute;
-	font-family: "Bricolage Grotesque", sans-serif;
-	display: flex;
-	flex-direction: wrap;
-	width: 30vw;
-	height: 10vh;
-	transform: translateX(130vw) translateY(6vw);
-	background: white;
+	font-weight: 300;
+	font-size: max(11px, calc(2.1 * var(--u)));
+	line-height: 1.4;
 }
 
-p:nth-of-type(2){
-	position: absolute;
-	font-family: "Bricolage Grotesque", sans-serif;
-	display: flex;
-	flex-direction: wrap;
-	width: 10vw;
-	height: 10vh;
-	transform: translateX(80vw) translateY(35vw);
-	background: white;
+.note-intro{
+	left: calc(214 * var(--u));
+	top: calc(10 * var(--u));
+	width: calc(48 * var(--u));
 }
 
-p:nth-of-type(3){
-	position: absolute;
-	font-family: "Bricolage Grotesque", sans-serif;
-	display: flex;
-	flex-direction: wrap;
-	width: 4vw;
-	height: 10vh;
-	transform: translateX(52vw) translateY(5vw);
-	background: white;
+.note-swipe{
+	left: calc(136 * var(--u));
+	top: calc(62 * var(--u));
+	width: calc(18 * var(--u));
 }
 
-
-.crazyshapes{
-	width: 100%;
-	transform: translateX(0vw);
+.note-arrows{
+	left: calc(87 * var(--u));
+	top: calc(9 * var(--u));
 }
 
+/* Nav buttons */
 .button{
+	position: fixed;
+	top: clamp(16px, 4vh, 48px);
+	z-index: 10;
 	background-color: white;
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	border: 1px solid #AEA9A4;
-	transform: translateX(1vw) translateY(0vw) ;
-	z-index: 1;
-	position: fixed;
+}
+
+.left{
+	left: clamp(16px, 4vw, 64px);
 }
 
 .right{
-	transform: translateX(88vw) translateY(0vw) ;
+	right: clamp(16px, 4vw, 64px);
+}
+
+.button a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
 }
 
 .button:hover{
 	background-color: #282A2B;
 }
 
-body:has(.button:hover) a{
+.button:hover a{
 	color: white;
 }
 
 /* circle */
-/* circle */
-/* circle */
+.happy{
+	left: 0;
+	top: 0;
+}
 .circle_container{
 	position: relative;
-	width: 25vw;
-	height: 25vw;
+	width: calc(44 * var(--u));
+	height: calc(44 * var(--u));
 }
 .circle_shape{
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	inset: 0;
 	border-radius: 50%;
 	transition: opacity 2s ease-in-out;
 }
@@ -107,30 +149,19 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.happy{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(-30vw) translateY(0vw);
+/* oval */
+.calm{
+	left: calc(51 * var(--u));
+	top: calc(28.5 * var(--u));
 }
-
-.happy h1{
-	transform: translateY(-5vw);
-}
-
-/* oval */
-/* oval */
-/* oval */
 .oval_container{
 	position: relative;
-	width: 27vw;
-	height: 14vw;
+	width: calc(47 * var(--u));
+	height: calc(24.5 * var(--u));
 }
 .oval_shape{
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	inset: 0;
 	border-radius: 50%;
 	transition: opacity 3s ease-in-out;
 }
@@ -143,36 +174,23 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.calm{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1vw;
-	transform: translateX(-0vw) translateY(-10vw);
-	width: auto;
+/* triangle */
+.hopeful{
+	left: calc(32.5 * var(--u));
+	top: calc(48.5 * var(--u));
 }
-
-.calm h1{
-	transform: translateY(-5vw);
+.hopeful h1{
+	top: 75%;
 }
-
-/* triangle */
-/* triangle */
-/* triangle */
 .triangle_container{
 	position: relative;
-	width: 18vw;
-	height: 14vw;
+	width: calc(31.5 * var(--u));
+	height: calc(24.5 * var(--u));
 }
 .triangle_shape{
 	position: absolute;
-	width: 0;
-	height: 0;
-	background: none;
+	inset: 0;
 	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-	width: 100%;
-	height: 100%;
 	transition: opacity 3s ease;
 }
 .triangle_top{
@@ -184,34 +202,20 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.hopeful{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1vw;
-	transform: translateX(-15vw) translateY(-15vw);
-	width: auto;
+/* rhombus */
+.grateful{
+	left: calc(57 * var(--u));
+	top: calc(4 * var(--u));
 }
-
-.hopeful h1{
-	transform: translateY(-5vw) ;
-}
-
-
-/* rhombus */
-/* rhombus */
-/* rhombus */
 .rhombus_container{
 	position: relative;
-	width: 10vw;
-	height: 10vw;
+	width: calc(17.5 * var(--u));
+	height: calc(17.5 * var(--u));
 }
 .rhombus_shape{
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	transform: rotate(45deg); 
+	inset: 0;
+	transform: rotate(45deg);
 	transition: opacity 3s ease;
 }
 .rhombus_top{
@@ -223,33 +227,21 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.grateful{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(-5vw) translateY(-57vw);
-	width: auto;
+/* waterdrop */
+.sad{
+	left: calc(5.5 * var(--u));
+	top: calc(54.5 * var(--u));
 }
-
-.grateful h1{
-	transform: translateY(-4vw);
-}
-
-/* waterdrop */
-/* waterdrop */
-/* waterdrop */
 .waterdrop_container{
-	position: absolute;
-	width: 9vw;
-	height: 9vw;
+	position: relative;
+	width: calc(15.8 * var(--u));
+	height: calc(15.8 * var(--u));
 }
 .waterdrop_shape{
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	border-radius:0% 100% 100% 100%;
-	transform: rotate(45deg); 
+	inset: 0;
+	border-radius: 0% 100% 100% 100%;
+	transform: rotate(45deg);
 	transition: opacity 3s ease-in-out;
 }
 .waterdrop_top{
@@ -261,30 +253,24 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.sad{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(-35vw) translateY(-35vw);
-	width: auto;
+/* half-circle */
+.tired{
+	left: calc(88.5 * var(--u));
+	top: calc(54.5 * var(--u));
 }
-
-
-/* half-circle */
-/* half-circle */
-/* half-circle */
+.tired h1{
+	top: 50%;
+}
 .half-circle_container{
-	position: absolute;
-	width: 24vw;
-	height: 12vw;
+	position: relative;
+	width: calc(42 * var(--u));
+	height: calc(21 * var(--u));
 }
 .half-circle_shape{
 	position: absolute;
-	width: 100%; 
-	height: 100%; 
-	border-top-left-radius: 12vw; 
-	border-top-right-radius: 12vw; 
+	inset: 0;
+	border-top-left-radius: calc(21 * var(--u));
+	border-top-right-radius: calc(21 * var(--u));
 	overflow: hidden;
 	transition: opacity 3s ease-in-out;
 }
@@ -297,28 +283,22 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.tired{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(20vw) translateY(-35vw);
-	width: auto;
+/* square */
+.neutral{
+	left: calc(106 * var(--u));
+	top: calc(1 * var(--u));
 }
-
-
-/* square */
-/* square */
-/* square */
+.neutral h1{
+	top: 80%;
+}
 .square_container{
 	position: relative;
-	width: 24vw;
-	height: 24vw;
+	width: calc(42 * var(--u));
+	height: calc(42 * var(--u));
 }
 .square_shape{
 	position: absolute;
-	width: 100%; 
-	height: 100%; 
+	inset: 0;
 	transition: opacity 3s ease-in-out;
 }
 .square_top{
@@ -330,42 +310,33 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.neutral{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(30vw) translateY(-72vw);
-	width: auto;
+/* star */
+.energetic{
+	left: calc(150 * var(--u));
+	top: calc(36 * var(--u));
 }
-
-.neutral h1{
-	transform: translateY(-5vw);
+.energetic h1{
+	top: 52%;
 }
-
-
-/* star */
-/* star */
-/* star */
 .star_container{
 	position: relative;
-	width: 24vw;
-	height: 24vw;
+	width: calc(35 * var(--u));
+	height: calc(35 * var(--u));
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .star_shape{
 	position: absolute;
-	width: 20vw;  
+	width: calc(29 * var(--u));
 	aspect-ratio: 1;
 	clip-path: polygon(50% 0,
-	calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
-	calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-	calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-	calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
-); 
-	transform: rotate(45deg); 
+		calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+		calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+		calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+		calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn)))
+	);
+	transform: rotate(45deg);
 	transition: opacity 3s ease-in-out;
 }
 .star_top{
@@ -377,37 +348,20 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.energetic{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transform: translateX(52vw) translateY(-80vw);
-	width: auto;
+/* curve */
+.overwhelming{
+	left: calc(160 * var(--u));
+	top: calc(4 * var(--u));
 }
-
-.energetic h1{
-	transform: translateY(-12vw);
-}
-
-
-
-/* curve */
-/* curve */
-/* curve */
 .curve_container{
-	width: auto;
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	width: calc(42 * var(--u));
+	height: calc(28 * var(--u));
 }
 .curve_shape{
 	position: absolute;
+	inset: 0;
 	--c: 85; /* control the curvature (a percentage value without unit bigger than 50%)*/
-	width: 24vw;
-	aspect-ratio: 3/2;
-	background: #a7237b;
 	mask: radial-gradient(calc(var(--c)*1%) 100% at 50% calc(100% + 100%*cos(asin(50/var(--c)))),#0000 calc(100% - 1px),#000);
 	clip-path: ellipse(calc(var(--c)*1%) 100% at bottom);
 	transition: opacity 3s ease-in-out;
@@ -421,31 +375,19 @@ body:has(.button:hover) a{
 	opacity: 0;
 }
 
-.overwhelming{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1vw;
-	transform: translateX(60vw) translateY(-115vw);
-	width: auto;
+/* hexagon */
+.unmotivated{
+	left: calc(206 * var(--u));
+	top: calc(32 * var(--u));
 }
-
-
-/* Hexagon */
-/* Hexagon */
-/* Hexagon */
 .hexagon_container{
-	width: auto;
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: calc(40 * var(--u));
+	aspect-ratio: 1/cos(30deg);
 }
 .hexagon_shape{
 	position: absolute;
-	height: 25vw; /* adjust to control the size  */
-	aspect-ratio: 1/cos(30deg);
+	inset: 0;
 	clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
 	transition: opacity 3s ease-in-out;
 }
@@ -456,14 +398,4 @@ body:has(.button:hover) a{
 .hexagon_bottom{
 	background: linear-gradient(to top, #A19580, #ACA991, #A8B4AD, #8C959B);
 	opacity: 0;
-}
-
-.unmotivated{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1vw;
-	transform: translateX(85vw) translateY(-95vw);
-	width: auto;
 }
