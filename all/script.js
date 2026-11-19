@@ -150,15 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	createShapeAnimation(topsquare, bottomsquare, gradientText, squareColors, squareTexts,locationText, locationTexts);
 
+	const pointer = document.querySelector('.pointer');
 	const cursor = document.querySelector('.cursor');
 	const text = document.querySelector('.text');
 	let currentShapeIndex = 0;
 
 	document.addEventListener('mousemove', (event) => {
-				cursor.style.left = `${event.clientX}px`;
-				cursor.style.top = `${event.clientY}px`;
-				text.style.left = `${event.clientX}px`;
-				text.style.top = `${event.clientY}px`;
+				pointer.style.left = `${event.clientX}px`;
+				pointer.style.top = `${event.clientY}px`;
 			});
 
 			setInterval(() => {
