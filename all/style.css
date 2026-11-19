@@ -13,8 +13,18 @@ body{
 }
 
 /* Hide the system cursor; the moving shape is the cursor here */
-html, body, a, .button{
+html, body{
 	cursor: none;
+}
+
+/* Over the buttons: show the normal pointer and hide the shape */
+.button, .button a{
+	cursor: pointer;
+}
+
+body:has(.button:hover) .cursor,
+body:has(.button:hover) .text{
+	opacity: 0;
 }
 
 /* Nav buttons */

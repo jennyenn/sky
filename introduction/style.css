@@ -45,7 +45,8 @@ blockquote{
 	aspect-ratio: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+	gap: clamp(16px, 1.6vw, 24px);
 	padding: clamp(28px, 3.5vw, 56px);
 	transform: rotate(10deg);
 }

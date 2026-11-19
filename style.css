@@ -7,11 +7,8 @@ body{
 	min-height: 100vh;
 	min-height: 100svh;
 	display: grid;
-	grid-template-columns: minmax(180px, 400px) minmax(0, 480px);
-	justify-content: center;
+	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	gap: clamp(40px, 8vw, 140px);
-	padding: 0 clamp(24px, 6vw, 96px);
 }
 
 h1{
@@ -75,6 +72,8 @@ time{
 section{
 	grid-column: 2;
 	grid-row: 1;
+	max-width: 560px;
+	padding: 0 clamp(32px, 7vw, 120px);
 }
 
 .gradient{

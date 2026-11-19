@@ -7,10 +7,10 @@
 	proportions on any screen.
 */
 :root{
-	--u: 0.85vh;
+	--u: 1.05vh;
 }
 @supports (height: 1svh){
-	:root{ --u: 0.85svh; }
+	:root{ --u: 1.05svh; }
 }
 
 body{
