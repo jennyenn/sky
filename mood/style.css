@@ -28,7 +28,7 @@ body{
 .crazyshapes{
 	position: relative;
 	flex: none;
-	width: calc(256 * var(--u));
+	width: calc(262 * var(--u));
 	height: calc(76 * var(--u));
 	margin: 0 clamp(72px, 8vw, 128px);
 }
@@ -72,8 +72,8 @@ h1{
 }
 
 .note-intro{
-	left: calc(208 * var(--u));
-	top: calc(2 * var(--u));
+	left: calc(214 * var(--u));
+	top: calc(10 * var(--u));
 	width: calc(48 * var(--u));
 }
 
