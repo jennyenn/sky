@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SKY DIARY · Home option A</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			/* Option A: the whole year as sky strips */
+			body{
+				display: flex;
+				flex-direction: column;
+				padding: clamp(88px, 14vh, 140px) clamp(24px, 6vw, 96px) clamp(80px, 10vh, 110px);
+				gap: clamp(32px, 6vh, 64px);
+			}
+
+			.intro{
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+				gap: 32px 64px;
+				align-items: end;
+			}
+			time{ font-weight: 200; font-size: 13px; }
+			h1{
+				margin-top: 12px;
+				font-weight: 400;
+				font-size: clamp(32px, 5vw, 64px);
+				line-height: 1.05;
+				letter-spacing: -0.01em;
+			}
+			.intro p{ font-weight: 200; line-height: 1.5; }
+			.intro .pill{ margin-top: 20px; }
+
+			/* Strips */
+			.year{ flex: 1; display: flex; flex-direction: column; min-height: 220px; }
+			.strips{
+				flex: 1;
+				display: flex;
+				gap: 2px;
+				min-height: 200px;
+			}
+			.strip{
+				position: relative;
+				flex: 1 1 0;
+				min-width: 2px;
+				border-radius: 2px;
+				cursor: pointer;
+				transition: flex-grow 0.35s ease;
+			}
+			.strip:hover, .strip.active{ flex-grow: 5; }
+
+			.months{
+				position: relative;
+				height: 16px;
+				margin-top: 12px;
+				font-size: 12px;
+				font-weight: 300;
+				color: #8A847E;
+			}
+			.months span{ position: absolute; transform: translateX(-2px); }
+			.legend{
+				margin-top: 6px;
+				font-size: 12px;
+				font-weight: 300;
+				color: #8A847E;
+			}
+
+			/* Hover card */
+			.card{
+				position: fixed;
+				z-index: 20;
+				width: 180px;
+				padding: 8px;
+				background: white;
+				border-radius: 10px;
+				box-shadow: 0 10px 30px rgba(40, 42, 43, 0.18);
+				pointer-events: none;
+				opacity: 0;
+				transform: translate(-50%, calc(-100% - 14px));
+				transition: opacity 0.15s;
+				font-size: 13px;
+			}
+			.card.show{ opacity: 1; }
+			.card .pic{
+				display: block;
+				width: 100%;
+				height: 120px;
+				background-size: cover;
+				background-position: center;
+				border-radius: 6px;
+			}
+			.card b{ display: block; margin-top: 8px; font-weight: 500; }
+			.card small{ color: #8A847E; }
+
+			@media (max-width: 760px){
+				.intro{ grid-template-columns: 1fr; }
+				.strips{ gap: 1px; }
+			}
+		</style>
+		<script src="../paper.js"></script>
+	</head>
+	<body>
+		<div class="button right"><a href="../introduction/index.html"> > </a></div>
+
+		<section class="intro">
+			<div>
+				<time>Jan. 14 – Dec. 01, 2024</time>
+				<h1>Welcome to my<br>Sky Diary.</h1>
+			</div>
+			<div>
+				<p>This website documents the 75 skies I captured in 2024. Each sky holds a moment, a feeling, and a story told through colors and shapes.</p>
+				<a class="pill" href="../introduction/index.html">Enter the diary →</a>
+			</div>
+		</section>
+
+		<section class="year" aria-label="Every sky of 2024, in order">
+			<div class="strips"></div>
+			<div class="months"></div>
+			<p class="legend">Each strip is one sky, in the order I saw it. Hover to see the photo.</p>
+		</section>
+
+		<div class="card"><div class="pic"></div><b></b><small></small></div>
+
+		<nav class="option-bar"><span>Home</span><a href="home-a.html" aria-current="page">A · Sky strips</a><a href="home-b.html">B · Full sky</a><a href="home-c.html">C · Sky title</a><a href="index.html">All options</a></nav>
+
+		<script src="../introduction/data.js"></script>
+		<script>
+			const skies = [...SKY_DATA].sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+			const wrap = document.querySelector('.strips');
+			const card = document.querySelector('.card');
+			const fmt = (d) => new Date(d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+			skies.forEach((s) => { new Image().src = '../asset/' + s.img; });
+			skies.forEach((s) => {
+				const el = document.createElement('a');
+				el.className = 'strip';
+				el.href = '../introduction/index.html';
+				el.style.background = `linear-gradient(to top, ${s.colors.join(', ')})`;
+				el.setAttribute('aria-label', `${s.date}, ${s.location}, ${s.mood}`);
+				el.addEventListener('mouseenter', () => show(el, s));
+				el.addEventListener('mouseleave', () => card.classList.remove('show'));
+				wrap.appendChild(el);
+			});
+
+			// Month labels sit above the first sky of that month
+			const months = document.querySelector('.months');
+			let lastM = '';
+			skies.forEach((s, k) => {
+				const m = new Date(s.date + 'T12:00').toLocaleDateString('en-US', { month: 'short' });
+				if (m !== lastM && (k === 0 || k / skies.length - (months.lastChild ? parseFloat(months.lastChild.style.left) / 100 : -1) > 0.06)) {
+					const span = document.createElement('span');
+					span.textContent = m;
+					span.style.left = (k / skies.length * 100) + '%';
+					months.appendChild(span);
+				}
+				lastM = m;
+			});
+
+			function show(el, s) {
+				const r = el.getBoundingClientRect();
+				card.querySelector('.pic').style.backgroundImage = `url(../asset/${s.img})`;
+				card.querySelector('b').textContent = s.mood;
+				card.querySelector('small').textContent = `${fmt(s.date)} · ${s.location}`;
+				const x = Math.min(Math.max(r.left + r.width / 2, 100), innerWidth - 100);
+				card.style.left = x + 'px';
+				card.style.top = r.top + 'px';
+				card.classList.add('show');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SKY DIARY · Process</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<script src="../paper.js"></script>
+	</head>
+	<body>
+		<div class="button left">
+			<a href="../introduction/index.html" data-back> < </a>
+		</div>
+		<div class="button right">
+			<a href="../mood/index.html"> > </a>
+		</div>
+
+		<!-- Tall section: scrolling through it moves Photos → Colors → Shapes -->
+		<section class="scroller" aria-label="From photo, to colors, to shape">
+			<div class="stage">
+				<div class="panel">
+					<div class="grid" data-step="photos"></div>
+				</div>
+
+				<nav class="steps" aria-label="Steps">
+					<button type="button" data-step="photos" aria-current="step">Photos</button>
+					<span class="line"><i></i></span>
+					<button type="button" data-step="colors">Colors</button>
+					<span class="line"><i></i></span>
+					<button type="button" data-step="shapes">Shapes</button>
+				</nav>
+				<p class="hint">Scroll to see each step</p>
+			</div>
+		</section>
+
+		<script src="../introduction/data.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>

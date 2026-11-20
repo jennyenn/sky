@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SKY DIARY · Home option B</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			/* Option B: the sky fills the screen; press and hold to see the real photo */
+			body{
+				user-select: none;
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
+				height: 100vh;
+				height: 100svh;
+				overflow: hidden;
+				color: white;
+			}
+
+			.layer{
+				position: fixed;
+				inset: 0;
+				transition: opacity 2.4s ease-in-out;
+			}
+			.photo{
+				background-size: cover;
+				background-position: center;
+				opacity: 0;
+				transition: opacity 0.6s ease;
+			}
+			body.reveal .photo{ opacity: 1; }
+
+			main{
+				position: relative;
+				z-index: 2;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				padding: 0 24px;
+				text-shadow: 0 1px 16px rgba(40, 42, 43, 0.25);
+				pointer-events: none;
+			}
+			main .pill{ pointer-events: auto; }
+			main{ transition: opacity 0.4s ease; }
+			body.reveal main{ opacity: 0; }
+			time{ font-size: 14px; font-weight: 300; }
+			h1{
+				margin-top: 16px;
+				font-weight: 400;
+				font-size: clamp(34px, 6vw, 80px);
+				line-height: 1.05;
+				letter-spacing: -0.01em;
+			}
+			main p{
+				max-width: 460px;
+				margin-top: 18px;
+				font-weight: 300;
+				line-height: 1.5;
+			}
+			main .pill{
+				margin-top: 28px;
+				border-color: white;
+				text-shadow: none;
+			}
+			main .pill:hover{ background: white; color: #282A2B; }
+
+			.caption{
+				position: fixed;
+				z-index: 2;
+				left: 50%;
+				bottom: 84px;
+				transform: translateX(-50%);
+				font-size: 13px;
+				font-weight: 300;
+				white-space: nowrap;
+				text-shadow: 0 1px 10px rgba(40, 42, 43, 0.35);
+			}
+			.caption .hint{ opacity: 0.8; }
+			body.reveal .caption .hint{ display: none; }
+			.caption .meta{ display: none; }
+			body.reveal .caption .meta{ display: inline; }
+
+			.button{ opacity: 0.7; color: #282A2B; }
+		</style>
+		<script src="../paper.js"></script>
+	</head>
+	<body class="sky-page">
+		<div class="layer sky a"></div>
+		<div class="layer sky b" style="opacity:0"></div>
+		<div class="layer photo"></div>
+
+		<div class="button right"><a href="../introduction/index.html"> > </a></div>
+
+		<main>
+			<time class="when"></time>
+			<h1>Welcome to my<br>Sky Diary.</h1>
+			<p>75 skies I captured in 2024. Each one holds a moment, a feeling, and a story told through colors and shapes.</p>
+			<a class="pill" href="../introduction/index.html">Enter the diary →</a>
+		</main>
+
+		<p class="caption"><span class="hint">Press and hold anywhere to see the real sky</span><span class="meta"></span></p>
+
+		<nav class="option-bar"><span>Home</span><a href="home-a.html">A · Sky strips</a><a href="home-b.html" aria-current="page">B · Full sky</a><a href="home-c.html">C · Sky title</a><a href="index.html">All options</a></nav>
+
+		<script src="../introduction/data.js"></script>
+		<script>
+			// One sky per mood, each with a large photo in asset/large
+			const picks = [5, 1, 25, 4, 8, 2, 3, 20, 63, 12, 7, 41];
+			const skies = picks.map((n) => SKY_DATA.find((d) => d.n === n)).filter(Boolean);
+			const layers = [document.querySelector('.sky.a'), document.querySelector('.sky.b')];
+			const photo = document.querySelector('.photo');
+			const when = document.querySelector('.when');
+			const meta = document.querySelector('.caption .meta');
+			const fmt = (d) => new Date(d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+			let i = 0, front = 0, timer;
+
+			// Preload photos
+			skies.forEach((s) => { new Image().src = `../asset/large/${String(s.n).padStart(2, '0')}.jpg`; });
+
+			function paint(s, el) { el.style.background = `linear-gradient(to top, ${s.colors.join(', ')})`; }
+			function label(s) {
+				when.textContent = fmt(s.date);
+				meta.textContent = `${fmt(s.date)}, ${s.time} · ${s.location} · ${s.mood}`;
+				photo.style.backgroundImage = `url(../asset/large/${String(s.n).padStart(2, '0')}.jpg)`;
+			}
+
+			paint(skies[0], layers[0]);
+			label(skies[0]);
+
+			function next() {
+				i = (i + 1) % skies.length;
+				const back = 1 - front;
+				paint(skies[i], layers[back]);
+				layers[back].style.opacity = 1;
+				layers[front].style.opacity = 0;
+				front = back;
+				label(skies[i]);
+			}
+			const start = () => { timer = setInterval(next, 5000); };
+			start();
+
+			// Press and hold anywhere (mouse or touch) to see the real photo
+			const on = (e) => {
+				if (e.target.closest('a, .option-bar')) return;
+				document.body.classList.add('reveal');
+				clearInterval(timer);
+			};
+			const off = () => {
+				if (!document.body.classList.contains('reveal')) return;
+				document.body.classList.remove('reveal');
+				start();
+			};
+			document.addEventListener('pointerdown', on);
+			document.addEventListener('pointerup', off);
+			document.addEventListener('pointercancel', off);
+			document.addEventListener('pointerleave', off);
+		</script>
+	</body>
+</html>

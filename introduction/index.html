@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
 		<title>SKY DIARY</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="../reset.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
 		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<script src="../paper.js"></script>
 	</head>
 	<body>
 		<div class="button left">
-			<a href="../index.html"> < </a>
+			<a href="../index.html" data-back> < </a>
 		</div>
 		<section>
 			<h1>
@@ -20,12 +23,42 @@
 			</p>
 		</section>
 		<blockquote>
-			<a href="../asset/data viz of sky.xlsx"> * my datas</a>
+			<button type="button" class="data-open"> * my datas</button>
 			<a href="../asset/weird color1.jpg"> * sketches</a>
 			<div class="sticker"></div>
 		</blockquote>
+		<dialog class="data-dialog" aria-labelledby="data-title">
+			<header class="data-header">
+				<div>
+					<h2 id="data-title">My sky data</h2>
+					<p class="data-count"></p>
+				</div>
+				<button type="button" class="data-close" aria-label="Close">×</button>
+			</header>
+			<div class="data-scroll">
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Sky</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Location</th>
+							<th>Colors</th>
+							<th>Mood</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<footer class="data-footer">
+				<a href="../asset/data viz of sky.xlsx" download>Download the spreadsheet (.xlsx, 100 MB)</a>
+			</footer>
+		</dialog>
 		<div class="button right">
-			<a href="../mood/index.html"> ></a>
+			<a href="../process/index.html"> ></a>
 		</div>
+		<script src="data.js"></script>
+		<script src="script.js"></script>
 	</body>
 </html>

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+body{
+	color: #282A2B;
+	font-family: "Bricolage Grotesque", sans-serif;
+}
+
+/* Nav buttons */
+.button{
+	position: fixed;
+	top: clamp(16px, 4vh, 48px);
+	z-index: 10;
+	background-color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid #AEA9A4;
+}
+.left{ left: clamp(16px, 4vw, 64px); }
+.right{ right: clamp(16px, 4vw, 64px); }
+.button a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.button:hover{ background-color: #282A2B; }
+.button:hover a{ color: white; }
+
+/* Scroll-driven stage */
+.scroller{
+	position: relative;
+	height: 340vh;
+}
+
+.stage{
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	height: 100svh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: clamp(24px, 5vh, 56px);
+	padding: 72px 16px 24px;
+}
+
+/*
+	Grid size: 15 columns x 5 rows on desktop. Each tile is as big as it can be
+	while the whole grid still fits the window's width and height.
+*/
+.panel{
+	--cols: 15;
+	--rows: 5;
+	--gap: 8px;
+	--pad: clamp(12px, 1.6vw, 24px);
+	--tile: min(
+		calc((min(1180px, 94vw) - 2 * var(--pad) - (var(--cols) - 1) * var(--gap)) / var(--cols)),
+		calc((100svh - 260px) / var(--rows) * 0.88)
+	);
+	background: #F9F2EB;
+	padding: var(--pad);
+}
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(var(--cols), var(--tile));
+	column-gap: var(--gap);
+}
+
+.tile{
+	position: relative;
+	width: var(--tile);
+	aspect-ratio: 0.88;
+}
+
+.tile > *{
+	position: absolute;
+	transition: opacity 0.6s ease, transform 0.6s ease;
+	transition-delay: var(--d, 0ms);
+}
+
+.tile .pic,
+.tile .grad{
+	inset: 0;
+}
+.tile .pic{
+	background-size: cover;
+	background-position: center;
+}
+.tile .grad{ opacity: 0; }
+
+.tile .box{
+	inset: 22% 10% 10%;
+	opacity: 0;
+	transform: scale(0.6);
+}
+.tile .shape{
+	position: absolute;
+	inset: 0;
+}
+
+.tile .mood{
+	top: 4%;
+	right: 6%;
+	font-size: clamp(7px, calc(var(--tile) * 0.12), 10px);
+	font-weight: 300;
+	line-height: 1;
+	color: #8A847E;
+	opacity: 0;
+	white-space: nowrap;
+}
+
+/* Steps */
+.grid[data-step="colors"] .pic{ opacity: 0; }
+.grid[data-step="colors"] .grad{ opacity: 1; }
+.grid[data-step="shapes"] .pic{ opacity: 0; }
+.grid[data-step="shapes"] .box{ opacity: 1; transform: scale(1); }
+.grid[data-step="shapes"] .mood{ opacity: 1; }
+
+/* Mood shapes, inside a roughly square box */
+.shape.happy{ border-radius: 50%; }
+.shape.calm{ inset: 20% 0; border-radius: 50%; }
+.shape.hopeful{ clip-path: polygon(50% 4%, 0 96%, 100% 96%); }
+.shape.grateful{ inset: 6%; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.shape.sad{ inset: 16%; border-radius: 0 100% 100% 100%; rotate: 45deg; }
+.shape.tired{ inset: 25% 0; border-radius: 999px 999px 0 0; }
+.shape.neutral{ inset: 8%; }
+.shape.energetic{ clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+.shape.overwhelming{
+	inset: 14% 0;
+	clip-path: ellipse(85% 100% at bottom);
+	-webkit-mask: radial-gradient(85% 100% at 50% 150%, #0000 calc(100% - 1px), #000);
+	mask: radial-gradient(85% 100% at 50% 150%, #0000 calc(100% - 1px), #000);
+}
+.shape.unmotivated{ inset: 10% 0; clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%); }
+.shape.anxious{ inset: 22% 0 28%; clip-path: polygon(0 0, 100% 0, 90% 100%, 80% 0, 70% 100%, 60% 0, 50% 100%, 40% 0, 30% 100%, 20% 0, 10% 100%); }
+
+.steps{
+	display: flex;
+	align-items: center;
+	gap: clamp(12px, 2vw, 24px);
+	width: min(940px, 86vw);
+}
+.steps button{
+	flex: none;
+	font-size: clamp(15px, 1.4vw, 20px);
+	font-weight: 300;
+	color: #AEA9A4;
+	cursor: pointer;
+	transition: color 0.4s;
+}
+.steps button[aria-current="step"],
+.steps button.done{
+	color: #282A2B;
+}
+.steps .line{
+	position: relative;
+	flex: 1;
+	height: 1px;
+	background: #DCD5CE;
+}
+.steps .line i{
+	position: absolute;
+	inset: 0;
+	background: #282A2B;
+	transform-origin: left;
+	transform: scaleX(var(--fill, 0));
+}
+
+.hint{
+	margin-top: calc(-1 * clamp(12px, 3vh, 32px));
+	font-size: 12px;
+	font-weight: 300;
+	color: #AEA9A4;
+	transition: opacity 0.4s;
+}
+.hint.gone{ opacity: 0; }
+
+/* Smaller screens: more rows, fewer columns */
+@media (max-width: 900px){
+	.panel{ --cols: 10; --rows: 8; --gap: 6px; }
+}
+@media (max-width: 600px){
+	.panel{ --cols: 8; --rows: 10; --gap: 4px; }
+	.tile .mood{ display: none; }
+}

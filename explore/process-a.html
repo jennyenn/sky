@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SKY DIARY · Process option A</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			/* Option A: process as diary pages, scrolling down */
+			body{ padding: 0 clamp(24px, 6vw, 96px) 120px; }
+
+			header{
+				max-width: 720px;
+				padding: clamp(96px, 16vh, 160px) 0 clamp(40px, 8vh, 80px);
+			}
+			.kicker{
+				font-size: 13px;
+				font-weight: 300;
+				color: #8A847E;
+			}
+			header h1{
+				margin-top: 12px;
+				font-size: clamp(32px, 5vw, 60px);
+				font-weight: 400;
+				line-height: 1.05;
+			}
+			header p{
+				margin-top: 20px;
+				font-weight: 200;
+				line-height: 1.55;
+				font-size: 17px;
+			}
+
+			.step{
+				display: grid;
+				grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+				gap: 32px clamp(32px, 6vw, 96px);
+				padding: clamp(48px, 9vh, 96px) 0;
+				border-top: 1px solid #E2DAD2;
+			}
+			.step .num{
+				font-size: 13px;
+				font-weight: 300;
+				color: #8A847E;
+			}
+			.step h2{
+				margin-top: 8px;
+				font-size: clamp(22px, 2.4vw, 30px);
+				font-weight: 400;
+			}
+			.step p{
+				margin-top: 14px;
+				font-weight: 200;
+				line-height: 1.55;
+			}
+
+			/* Diary bits */
+			.page{
+				position: relative;
+				background: white;
+				padding: 12px;
+				box-shadow: 0 8px 24px rgba(40, 42, 43, 0.08);
+			}
+			.tape::before{
+				content: "";
+				position: absolute;
+				top: -12px;
+				left: 50%;
+				width: 90px;
+				height: 24px;
+				transform: translateX(-50%) rotate(-3deg);
+				background: rgba(236, 169, 186, 0.55);
+			}
+			.page img{ display: block; width: 100%; }
+
+			/* 01 polaroids */
+			.polaroids{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 18px;
+			}
+			.polaroids figure{
+				width: clamp(110px, 13vw, 170px);
+				padding: 8px 8px 28px;
+				background: white;
+				box-shadow: 0 8px 20px rgba(40, 42, 43, 0.1);
+				font-size: 11px;
+				font-weight: 300;
+				color: #8A847E;
+				transition: transform 0.3s ease;
+			}
+			.polaroids figure:nth-child(odd){ transform: rotate(-3deg); }
+			.polaroids figure:nth-child(even){ transform: rotate(2.5deg) translateY(12px); }
+			.polaroids figure:hover{ transform: rotate(0) scale(1.06); z-index: 2; }
+			.polaroids img{
+				display: block;
+				width: 100%;
+				aspect-ratio: 3 / 4;
+				object-fit: cover;
+				margin-bottom: 8px;
+			}
+
+			/* 02 photo to gradient */
+			.pairs{
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 14px;
+			}
+			.pair img, .pair .grad{
+				display: block;
+				width: 100%;
+				aspect-ratio: 3 / 4;
+				object-fit: cover;
+				border-radius: 4px;
+			}
+			.pair .dots{
+				display: flex;
+				justify-content: center;
+				gap: 3px;
+				margin: 8px 0;
+			}
+			.pair .dots i{ width: 10px; height: 10px; border-radius: 50%; }
+			.pair small{
+				display: block;
+				margin-top: 6px;
+				font-size: 11px;
+				font-weight: 300;
+				color: #8A847E;
+				text-align: center;
+			}
+
+			/* 03 sketches */
+			.sketches{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+				align-items: center;
+			}
+			.sketches .notebook{ transform: rotate(-2deg); }
+			.sketches .shapes{
+				background: #FBF8F4;
+				transform: rotate(1.5deg);
+			}
+
+			/* 04 references */
+			blockquote{
+				margin-top: 24px;
+				padding-left: 16px;
+				border-left: 2px solid #ECA9BA;
+				font-weight: 300;
+				font-style: italic;
+				line-height: 1.5;
+			}
+
+			.next{
+				display: flex;
+				justify-content: flex-end;
+				padding-top: 48px;
+				border-top: 1px solid #E2DAD2;
+			}
+
+			@media (min-width: 1100px){
+				.pairs{ grid-template-columns: repeat(8, minmax(0, 1fr)); }
+			}
+			@media (max-width: 820px){
+				.step{ grid-template-columns: 1fr; }
+				.sketches{ grid-template-columns: 1fr; }
+			}
+		</style>
+		<script src="../paper.js"></script>
+	</head>
+	<body>
+		<div class="button left"><a href="../introduction/index.html" data-back> < </a></div>
+		<div class="button right"><a href="../mood/index.html"> > </a></div>
+
+		<header>
+			<p class="kicker">Process</p>
+			<h1>How a sky becomes<br>a sticker.</h1>
+			<p>Every sky went through the same four steps: I took the photo, pulled out its colors, named how I felt, and gave that feeling a shape, like a sticker pasted into a diary.</p>
+		</header>
+
+		<section class="step">
+			<div>
+				<p class="num">01</p>
+				<h2>Collecting skies</h2>
+				<p>Through 2024 I photographed the sky whenever it made me stop, from Taipei to New York. 75 skies in total, each with a date, a time, a place and a feeling.</p>
+			</div>
+			<div class="polaroids" id="polaroids"></div>
+		</section>
+
+		<section class="step">
+			<div>
+				<p class="num">02</p>
+				<h2>Photo to colors</h2>
+				<p>From each photo I picked four colors, from the horizon up to the top of the sky. Stacked together, they become that day's gradient.</p>
+			</div>
+			<div class="pairs" id="pairs"></div>
+		</section>
+
+		<section class="step">
+			<div>
+				<p class="num">03</p>
+				<h2>Feeling to shape</h2>
+				<p>I gave every feeling one shape: happy is a circle, calm an oval, tired a sinking half-circle. In my notebook I also sketched how the pages could work: a gradient that fills the screen, the sky changing from day to night, and Taipei next to New York.</p>
+			</div>
+			<div class="sketches">
+				<figure class="page tape notebook"><img src="../asset/process/notebook.jpg" alt="Notebook page with sketches of shapes, layouts and charts"></figure>
+				<figure class="page shapes"><img src="../asset/process/shape-sketch.png" alt="Line drawings of each mood's shape"></figure>
+			</div>
+		</section>
+
+		<section class="step">
+			<div>
+				<p class="num">04</p>
+				<h2>Diary as the medium</h2>
+				<p>I thought of this project as a sky diary, a place to record my memories with the sky. These diary pages shaped the look: quiet paper, short notes, and things pasted in.</p>
+				<blockquote>Data isn't just cold, lifeless charts. It can also be warm and human-centered.</blockquote>
+			</div>
+			<figure class="page tape"><img src="../asset/process/diary-references.jpg" alt="Diary reference images"></figure>
+		</section>
+
+		<div class="next"><a class="pill" href="../mood/index.html">See the moods →</a></div>
+
+		<nav class="option-bar"><span>Process</span><a href="process-a.html" aria-current="page">A · Diary</a><a href="process-b.html">B · Sideways</a><a href="process-c.html">C · Transform</a><a href="index.html">All options</a></nav>
+
+		<script src="../introduction/data.js"></script>
+		<script>
+			const fmt = (d) => new Date(d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+			const byN = (n) => SKY_DATA.find((d) => d.n === n);
+
+			// 01: a handful of polaroids
+			document.getElementById('polaroids').innerHTML = [5, 41, 2, 20, 63, 25, 8]
+				.map(byN).filter(Boolean)
+				.map((s) => `<figure><img src="../asset/${s.img}" alt="Sky in ${s.location}" loading="lazy">${fmt(s.date)} · ${s.location}</figure>`)
+				.join('');
+
+			// 02: photo, colors, gradient
+			document.getElementById('pairs').innerHTML = [1, 2, 4, 5, 7, 20, 25, 63]
+				.map(byN).filter(Boolean)
+				.map((s) => `<div class="pair">
+					<img src="../asset/${s.img}" alt="" loading="lazy">
+					<div class="dots">${s.colors.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
+					<div class="grad" style="background:linear-gradient(to top, ${s.colors.join(', ')})"></div>
+					<small>${s.mood}</small>
+				</div>`)
+				.join('');
+		</script>
+	</body>
+</html>
