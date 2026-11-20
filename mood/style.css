@@ -61,6 +61,12 @@ h1{
 	color: rgba(40, 42, 43, 0.45);
 	white-space: nowrap;
 	pointer-events: none;
+	transition: color 2s ease-in-out;
+}
+
+/* Lighter label when the shape turns dark (set by script.js) */
+h1.on-dark{
+	color: rgba(255, 255, 255, 0.75);
 }
 
 /* Notes */

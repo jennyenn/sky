@@ -1,11 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+	// Label color: pick dark or light text so the label stays readable
+	// on whatever gradient is showing.
+	function parseColors(gradient) {
+		const colors = [];
+		const re = /#([0-9a-f]{6})|rgba?\((\d+),\s*(\d+),\s*(\d+)/gi;
+		let m;
+		while ((m = re.exec(gradient))) {
+			if (m[1]) {
+				const n = parseInt(m[1], 16);
+				colors.push([(n >> 16) & 255, (n >> 8) & 255, n & 255]);
+			} else {
+				colors.push([+m[2], +m[3], +m[4]]);
+			}
+		}
+		return colors;
+	}
+
+	function luminance([r, g, b]) {
+		const ch = (v) => {
+			v /= 255;
+			return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+		};
+		return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b);
+	}
+
+	function setLabelColor(label, gradient) {
+		const colors = parseColors(gradient);
+		if (!label || colors.length === 0) return;
+		// The label sits in the middle of the shape, so judge by the middle stops
+		const mid = colors.length > 2 ? colors.slice(1, -1) : colors;
+		const avg = mid.reduce((sum, c) => sum + luminance(c), 0) / mid.length;
+		label.classList.toggle('on-dark', avg < 0.3);
+	}
+
 	function createShapeAnimation(topElement, bottomElement, colors) {
 		let currentGradient = 0;
 		let isTopVisible = true;
+		const label = topElement.closest('.crazyshapes > div').querySelector('h1');
+
+		setLabelColor(label, getComputedStyle(topElement).backgroundImage);
 	
 		setInterval(() => {
 		  currentGradient = (currentGradient + 1) % colors.length;
+		  setLabelColor(label, colors[currentGradient]);
 	
 		  if (isTopVisible) {
 			bottomElement.style.background = colors[currentGradient];
