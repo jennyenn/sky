@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SKY DIARY · Options</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			body{ padding: clamp(64px, 10vh, 120px) clamp(24px, 6vw, 96px) 80px; }
+			h1{ font-size: clamp(28px, 4vw, 48px); font-weight: 400; }
+			.lede{ margin-top: 12px; font-weight: 200; max-width: 560px; line-height: 1.5; }
+			h2{ margin-top: 56px; font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: #8A847E; }
+			.cards{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 16px; }
+			.cards a{ display: block; padding: 22px; background: white; border: 1px solid #E2DAD2; border-radius: 14px; transition: transform 0.2s, box-shadow 0.2s; }
+			.cards a:hover{ transform: translateY(-3px); box-shadow: 0 10px 30px rgba(40, 42, 43, 0.1); }
+			.cards b{ display: block; font-size: 18px; font-weight: 400; }
+			.cards p{ margin-top: 8px; font-size: 14px; font-weight: 200; line-height: 1.5; }
+		</style>
+	</head>
+	<body>
+		<h1>Options to choose from</h1>
+		<p class="lede">Explorations for the home page and a new process page. They use the real data, photos and sketches. Pick one of each (or mix) and it gets built into the site.</p>
+
+		<h2>Home page</h2>
+		<div class="cards">
+			<a href="home-a.html"><b>A · Sky strips</b><p>The whole year as 75 thin gradient strips in date order. Hover a strip to see its photo, date and mood.</p></a>
+			<a href="home-b.html"><b>B · Full sky</b><p>The sky fills the screen and slowly changes. Press and hold to see the real photo behind it, from your notebook sketch.</p></a>
+			<a href="home-c.html"><b>C · Sky title</b><p>A huge "Sky Diary" title with the sky moving through the letters, plus which sky it is.</p></a>
+		</div>
+
+		<h2>Process page</h2>
+		<div class="cards">
+			<a href="process-a.html"><b>A · Diary</b><p>Scrolls down like diary pages: polaroids, photo-to-color pairs, taped sketches, references. Four numbered steps.</p></a>
+			<a href="process-b.html"><b>B · Sideways</b><p>One long sideways canvas like the mood page, with your process boards and sketches laid out like stickers.</p></a>
+			<a href="process-c.html"><b>C · Transform</b><p>All 75 skies in a grid that turn from photo, to colors, to their mood shape. Sketches below.</p></a>
+		</div>
+	</body>
+</html>

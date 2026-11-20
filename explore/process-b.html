@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SKY DIARY · Process option B</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			/* Option B: one long sideways canvas, like the mood page */
+			:root{ --u: 1.05vh; }
+			@supports (height: 1svh){ :root{ --u: 1.05svh; } }
+
+			body{
+				height: 100vh;
+				height: 100svh;
+				overflow-x: auto;
+				overflow-y: hidden;
+				display: flex;
+				align-items: center;
+			}
+			body::after{ content: ""; flex: none; width: 1px; height: 1px; }
+
+			.canvas{
+				position: relative;
+				flex: none;
+				width: calc(668 * var(--u));
+				height: calc(76 * var(--u));
+				margin: 0 clamp(72px, 8vw, 128px);
+			}
+			.canvas > *{ position: absolute; }
+
+			.text{ font-size: max(12px, calc(1.9 * var(--u))); font-weight: 300; line-height: 1.5; }
+			.num{
+				font-size: max(11px, calc(1.6 * var(--u)));
+				font-weight: 300;
+				color: #8A847E;
+			}
+			.num b{ color: #282A2B; font-weight: 400; margin-left: 6px; }
+
+			.intro{ left: 0; top: calc(14 * var(--u)); width: calc(46 * var(--u)); }
+			.intro h1{
+				font-size: max(26px, calc(5.4 * var(--u)));
+				font-weight: 400;
+				line-height: 1.05;
+				margin: calc(1.5 * var(--u)) 0 calc(2.5 * var(--u));
+			}
+
+			.paper{
+				background: white;
+				padding: calc(1.2 * var(--u));
+				box-shadow: 0 8px 24px rgba(40, 42, 43, 0.08);
+			}
+			.paper img{ display: block; width: 100%; }
+			.tape::before{
+				content: "";
+				position: absolute;
+				top: calc(-1.4 * var(--u));
+				left: 50%;
+				width: calc(11 * var(--u));
+				height: calc(2.8 * var(--u));
+				transform: translateX(-50%) rotate(-3deg);
+				background: rgba(236, 169, 186, 0.55);
+			}
+
+			.n1{ left: calc(62 * var(--u)); top: calc(4 * var(--u)); }
+			.collect{ left: calc(62 * var(--u)); top: calc(9 * var(--u)); width: calc(160 * var(--u)); }
+			.c1{ left: calc(62 * var(--u)); top: calc(66 * var(--u)); width: calc(70 * var(--u)); }
+
+			.arrows{ left: calc(232 * var(--u)); top: calc(32 * var(--u)); line-height: 1.4; }
+
+			.n2{ left: calc(248 * var(--u)); top: calc(2 * var(--u)); }
+			.notebook{ left: calc(248 * var(--u)); top: calc(7 * var(--u)); width: calc(86 * var(--u)); transform: rotate(-2deg); }
+			.c2{ left: calc(250 * var(--u)); top: calc(69 * var(--u)); width: calc(70 * var(--u)); }
+
+			.n3{ left: calc(348 * var(--u)); top: calc(10 * var(--u)); }
+			.shapes{ left: calc(348 * var(--u)); top: calc(15 * var(--u)); width: calc(112 * var(--u)); background: #FBF8F4; transform: rotate(1.5deg); }
+			.c3{ left: calc(350 * var(--u)); top: calc(64 * var(--u)); width: calc(70 * var(--u)); }
+
+			.n4{ left: calc(476 * var(--u)); top: calc(6 * var(--u)); }
+			.refs{ left: calc(476 * var(--u)); top: calc(11 * var(--u)); width: calc(150 * var(--u)); }
+			.c4{ left: calc(476 * var(--u)); top: calc(63 * var(--u)); width: calc(76 * var(--u)); }
+
+			.end{ left: calc(640 * var(--u)); top: calc(34 * var(--u)); }
+		</style>
+	</head>
+	<body>
+		<div class="button left"><a href="../introduction/index.html"> < </a></div>
+		<div class="button right"><a href="../mood/index.html"> > </a></div>
+
+		<div class="canvas">
+			<div class="intro text">
+				<p class="num">Process</p>
+				<h1>How a sky becomes a sticker.</h1>
+				<p>Every sky went through four steps: the photo, its colors, the feeling, and a shape. Scroll sideways to follow along.</p>
+			</div>
+
+			<p class="num n1">01<b>Collect and extract</b></p>
+			<figure class="paper collect"><img src="../asset/process/photos-to-gradients.jpg" alt="Grid of sky photos, each above its extracted gradient"></figure>
+			<p class="text c1">75 skies from 2024. Under each photo, the four colors I picked from it, stacked into a gradient.</p>
+
+			<p class="text arrows">&gt;<br>&gt;<br>&gt;</p>
+
+			<p class="num n2">02<b>Sketch the pages</b></p>
+			<figure class="paper tape notebook"><img src="../asset/process/notebook.jpg" alt="Notebook page with layout sketches"></figure>
+			<p class="text c2">Early ideas: a gradient that fills the screen, day turning into night, Taipei next to New York.</p>
+
+			<p class="num n3">03<b>Give each feeling a shape</b></p>
+			<figure class="paper shapes"><img src="../asset/process/shape-sketch.png" alt="Line drawings of each mood's shape"></figure>
+			<p class="text c3">One shape per feeling, like stickers I could paste into the diary.</p>
+
+			<p class="num n4">04<b>Diary as the medium</b></p>
+			<figure class="paper tape refs"><img src="../asset/process/diary-references.jpg" alt="Diary reference images"></figure>
+			<p class="text c4">References for the feel: quiet paper, short notes, and things pasted in.</p>
+
+			<a class="pill end" href="../mood/index.html">See the moods →</a>
+		</div>
+
+		<nav class="option-bar"><span>Process</span><a href="process-a.html">A · Diary</a><a href="process-b.html" aria-current="page">B · Sideways</a><a href="process-c.html">C · Transform</a><a href="index.html">All options</a></nav>
+
+		<script>
+			// Let a normal mouse wheel scroll the page sideways
+			window.addEventListener('wheel', (e) => {
+				if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+					window.scrollBy(e.deltaY, 0);
+					e.preventDefault();
+				}
+			}, { passive: false });
+		</script>
+	</body>
+</html>

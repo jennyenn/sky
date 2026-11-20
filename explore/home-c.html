@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SKY DIARY · Home option C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<style>
+			/* Option C: the sky shows through a huge title */
+			body{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 96px clamp(24px, 5vw, 80px) 110px;
+			}
+
+			.title{
+				position: relative;
+				font-weight: 600;
+				font-size: clamp(64px, 17vw, 300px);
+				line-height: 0.88;
+				letter-spacing: -0.04em;
+			}
+			.title span{
+				display: block;
+				color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				transition: opacity 2.4s ease-in-out;
+			}
+			/* Two copies stacked so the sky can crossfade */
+			.title .b{
+				position: absolute;
+				inset: 0;
+				opacity: 0;
+			}
+
+			.below{
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 24px 48px;
+				margin-top: clamp(28px, 5vh, 56px);
+				padding-top: 20px;
+				border-top: 1px solid #DCD3CA;
+				font-weight: 200;
+				line-height: 1.5;
+			}
+			.below h2{
+				font-size: 12px;
+				font-weight: 400;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: #8A847E;
+				margin-bottom: 8px;
+			}
+			.today b{ font-weight: 400; }
+			.swatches{ display: flex; gap: 4px; margin-top: 10px; }
+			.swatches i{
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				transition: background 1.2s;
+			}
+			.enter{ align-self: end; justify-self: end; }
+
+			@media (max-width: 760px){
+				.below{ grid-template-columns: 1fr; }
+				.enter{ justify-self: start; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="button right"><a href="../introduction/index.html"> > </a></div>
+
+		<h1 class="title" aria-label="Sky Diary">
+			<span class="a">Sky<br>Diary</span>
+			<span class="b" aria-hidden="true">Sky<br>Diary</span>
+		</h1>
+
+		<section class="below">
+			<div>
+				<h2>About</h2>
+				<p>75 skies I captured in 2024, from Taipei to New York. Each one holds a moment, a feeling, and a story told through colors and shapes.</p>
+			</div>
+			<div class="today">
+				<h2>Sky in the title</h2>
+				<p><b class="mood"></b><br><span class="where"></span></p>
+				<div class="swatches"><i></i><i></i><i></i><i></i></div>
+			</div>
+			<a class="pill enter" href="../introduction/index.html">Enter the diary →</a>
+		</section>
+
+		<nav class="option-bar"><span>Home</span><a href="home-a.html">A · Sky strips</a><a href="home-b.html">B · Full sky</a><a href="home-c.html" aria-current="page">C · Sky title</a><a href="index.html">All options</a></nav>
+
+		<script src="../introduction/data.js"></script>
+		<script>
+			// Skip very pale skies: they would disappear as text on the cream background
+			const lum = (hex) => {
+				const n = parseInt(hex.slice(1), 16);
+				return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
+			};
+			const skies = [...SKY_DATA]
+				.filter((s) => s.colors.reduce((t, c) => t + lum(c), 0) / s.colors.length < 0.72)
+				.sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+			const spans = [document.querySelector('.title .a'), document.querySelector('.title .b')];
+			const fmt = (d) => new Date(d + 'T12:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+			let i = Math.floor(Math.random() * skies.length), front = 0;
+
+			function paint(s, el) {
+				el.style.backgroundImage = `linear-gradient(to top, ${s.colors.join(', ')})`;
+				document.querySelector('.mood').textContent = s.mood;
+				document.querySelector('.where').textContent = `${fmt(s.date)} · ${s.location}`;
+				document.querySelectorAll('.swatches i').forEach((dot, k) => { dot.style.background = s.colors[k] || 'transparent'; });
+			}
+
+			paint(skies[i], spans[0]);
+			setInterval(() => {
+				i = (i + 1) % skies.length;
+				const back = 1 - front;
+				paint(skies[i], spans[back]);
+				spans[back].style.opacity = 1;
+				spans[front].style.opacity = 0;
+				front = back;
+			}, 4000);
+		</script>
+	</body>
+</html>

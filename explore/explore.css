@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+/* Shared styles for the option pages in /explore */
+body{
+	background-color: #f8f2ec;
+	color: #282A2B;
+	font-family: "Bricolage Grotesque", sans-serif;
+	min-height: 100vh;
+	min-height: 100svh;
+}
+
+strong{ font-weight: 500; }
+
+/* Round nav buttons, same as the live site */
+.button{
+	position: fixed;
+	top: clamp(16px, 4vh, 48px);
+	z-index: 30;
+	background-color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid #AEA9A4;
+}
+.button.left{ left: clamp(16px, 4vw, 64px); }
+.button.right{ right: clamp(16px, 4vw, 64px); }
+.button a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+.button:hover{ background-color: #282A2B; }
+.button:hover a{ color: white; }
+
+/* Pill link (Enter, Next) */
+.pill{
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 22px;
+	border: 1px solid #282A2B;
+	border-radius: 999px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+.pill:hover{
+	background: #282A2B;
+	color: white;
+}
+
+/* Floating switcher to compare options (exploration only) */
+.option-bar{
+	position: fixed;
+	left: 50%;
+	bottom: 16px;
+	transform: translateX(-50%);
+	z-index: 40;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 6px;
+	background: rgba(255, 255, 255, 0.92);
+	backdrop-filter: blur(8px);
+	border: 1px solid #E2DAD2;
+	border-radius: 999px;
+	box-shadow: 0 6px 24px rgba(40, 42, 43, 0.12);
+	font-size: 13px;
+	white-space: nowrap;
+	color: #282A2B;
+}
+.option-bar span{
+	padding: 0 10px 0 8px;
+	color: #8A847E;
+}
+.option-bar a{
+	padding: 6px 12px;
+	border-radius: 999px;
+	cursor: pointer;
+}
+.option-bar a:hover{ background: #F1EAE3; }
+.option-bar a[aria-current="page"]{
+	background: #282A2B;
+	color: white;
+}
