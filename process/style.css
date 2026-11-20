@@ -60,7 +60,6 @@ body{
 		calc((min(1180px, 94vw) - 2 * var(--pad) - (var(--cols) - 1) * var(--gap)) / var(--cols)),
 		calc((100svh - 260px) / var(--rows) * 0.88)
 	);
-	background: #F9F2EB;
 	padding: var(--pad);
 }
 
@@ -93,7 +92,7 @@ body{
 .tile .grad{ opacity: 0; }
 
 .tile .box{
-	inset: 22% 10% 10%;
+	inset: 12% 8%;
 	opacity: 0;
 	transform: scale(0.6);
 }
@@ -102,23 +101,12 @@ body{
 	inset: 0;
 }
 
-.tile .mood{
-	top: 4%;
-	right: 6%;
-	font-size: clamp(7px, calc(var(--tile) * 0.12), 10px);
-	font-weight: 300;
-	line-height: 1;
-	color: #8A847E;
-	opacity: 0;
-	white-space: nowrap;
-}
 
 /* Steps */
 .grid[data-step="colors"] .pic{ opacity: 0; }
 .grid[data-step="colors"] .grad{ opacity: 1; }
 .grid[data-step="shapes"] .pic{ opacity: 0; }
 .grid[data-step="shapes"] .box{ opacity: 1; transform: scale(1); }
-.grid[data-step="shapes"] .mood{ opacity: 1; }
 
 /* Mood shapes, inside a roughly square box */
 .shape.happy{ border-radius: 50%; }
@@ -146,7 +134,7 @@ body{
 }
 .steps button{
 	flex: none;
-	font-size: clamp(15px, 1.4vw, 20px);
+	font-size: clamp(12px, 0.95vw, 14px);
 	font-weight: 300;
 	color: #AEA9A4;
 	cursor: pointer;
@@ -185,5 +173,4 @@ body{
 }
 @media (max-width: 600px){
 	.panel{ --cols: 8; --rows: 10; --gap: 4px; }
-	.tile .mood{ display: none; }
 }

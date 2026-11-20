@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		return `<div class="tile" style="--d:${k * 8}ms">
 			<div class="pic" role="img" aria-label="Sky on ${s.date}, ${s.location}" style="background-image:url(../asset/${s.img})"></div>
 			<div class="grad" style="background:${g}"></div>
-			<div class="box"><div class="shape ${s.mood.toLowerCase()}" style="background:${g}"></div></div>
-			<span class="mood">${s.mood}</span>
+			<div class="box" aria-label="${s.mood}"><div class="shape ${s.mood.toLowerCase()}" style="background:${g}"></div></div>
 		</div>`;
 	}).join('');
 
