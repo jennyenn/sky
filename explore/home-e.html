@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SKY DIARY · Home layout 2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../reset.css" rel="stylesheet">
+		<link href="explore.css" rel="stylesheet">
+		<link href="strips.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
+		<link rel="icon" href="../asset/icon.png" type="image/png">
+		<script src="../paper.js"></script>
+		<style>
+			/* Layout 2: vertical strips on the left, text on the right */
+			.layout{
+				grid-template-columns: minmax(0, 730px) minmax(0, 320px);
+				justify-content: space-between;
+				align-items: center;
+			}
+			.panel{ padding: 22px 18px 10px; }
+			.strips{ height: clamp(180px, 28vh, 260px); }
+			.months{
+				position: relative;
+				height: 14px;
+				margin-top: 10px;
+				font-size: 9px;
+				font-weight: 300;
+				color: #8A847E;
+			}
+			.months span{ position: absolute; transform: translateX(4px); }
+			.caption{ margin: 4px 4px 0; height: 12px; font-size: 10px; }
+
+			@media (max-width: 820px){
+				.layout{ grid-template-columns: 1fr; }
+				.text{ order: -1; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="button right"><a href="../introduction/index.html"> > </a></div>
+
+		<main class="layout">
+			<section class="panel" aria-label="Every sky of 2024, in order">
+				<div class="strips" data-direction="columns"></div>
+				<div class="months"></div>
+				<p class="caption"></p>
+			</section>
+			<section class="text">
+				<h1>Welcome to my<br>Sky Diary.</h1>
+				<p>This website documents the skies I captured in 2024.<br>Each sky captures a moment, a feeling, and a story told through colors and shapes.</p>
+				<p class="sign">- Jenny Yen</p>
+			</section>
+		</main>
+
+		<nav class="option-bar"><span>Home</span><a href="home-d.html">Layout 1</a><a href="home-e.html" aria-current="page">Layout 2</a><a href="index.html">All options</a></nav>
+
+		<script src="../introduction/data.js"></script>
+		<script src="strips.js"></script>
+	</body>
+</html>

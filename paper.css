@@ -1,0 +1,95 @@
+/*
+	Shared by every page: paper background and the page-flip transition.
+	Link it after the page's own stylesheet.
+*/
+
+/* ---------- Paper ---------- */
+body:not(.sky-page){
+	/* lighter than #FFFBF6 so the grain on top averages out to it */
+	background-color: #FFFEF9;
+}
+
+/* Grain, soft blotches and faint fibers, drawn as SVG noise */
+body:not(.sky-page)::before{
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.36  0 0 0 0 0.30  0.26 0 0 0 -0.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23g%29'/%3E%3C/svg%3E"),
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.35' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.44  0 0 0 0 0.38  0.3 0 0 0 -0.22'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23f%29'/%3E%3C/svg%3E"),
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.46  0 0 0 0 0.36  0.12 0 0 0 -0.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23m%29'/%3E%3C/svg%3E");
+	mix-blend-mode: multiply;
+}
+
+/* ---------- Page flip between pages ---------- */
+/* Works in Chrome, Edge and Safari 18.2+; other browsers just switch pages. */
+@view-transition{
+	navigation: auto;
+}
+
+::view-transition-group(root){
+	animation-duration: 0.9s;
+}
+
+::view-transition-image-pair(root){
+	perspective: 2400px;
+	isolation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root){
+	mix-blend-mode: normal;
+	transform-origin: left center;
+	backface-visibility: hidden;
+	animation-duration: 0.9s;
+	animation-timing-function: cubic-bezier(0.4, 0.1, 0.25, 1);
+	animation-fill-mode: both;
+}
+
+/* Going forward: the current page lifts from the right and turns over to the left */
+::view-transition-old(root){
+	z-index: 2;
+	animation-name: page-turn-away;
+}
+::view-transition-new(root){
+	z-index: 1;
+	animation-name: page-uncover;
+}
+
+/* Going back: the previous page turns back over from the left */
+html:active-view-transition-type(back)::view-transition-old(root){
+	z-index: 1;
+	animation-name: page-cover;
+}
+html:active-view-transition-type(back)::view-transition-new(root){
+	z-index: 2;
+	animation-name: page-turn-back;
+}
+
+@keyframes page-turn-away{
+	0%   { transform: rotateY(0deg);    filter: brightness(1); box-shadow: 0 0 0 rgba(40, 42, 43, 0); }
+	60%  { filter: brightness(0.9); box-shadow: 30px 0 60px rgba(40, 42, 43, 0.25); }
+	100% { transform: rotateY(-180deg); filter: brightness(0.8); }
+}
+@keyframes page-uncover{
+	0%   { filter: brightness(0.82); }
+	100% { filter: brightness(1); }
+}
+@keyframes page-turn-back{
+	0%   { transform: rotateY(-180deg); filter: brightness(0.8); }
+	40%  { filter: brightness(0.9); box-shadow: 30px 0 60px rgba(40, 42, 43, 0.25); }
+	100% { transform: rotateY(0deg);    filter: brightness(1); box-shadow: 0 0 0 rgba(40, 42, 43, 0); }
+}
+@keyframes page-cover{
+	0%   { filter: brightness(1); }
+	100% { filter: brightness(0.82); }
+}
+
+@media (prefers-reduced-motion: reduce){
+	::view-transition-old(root),
+	::view-transition-new(root){
+		animation: none !important;
+	}
+}

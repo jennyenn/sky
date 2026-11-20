@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
 		<title>SKY DIARY · Options</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="../reset.css" rel="stylesheet">
 		<link href="explore.css" rel="stylesheet">
+		<link href="../paper.css" rel="stylesheet">
 		<link rel="icon" href="../asset/icon.png" type="image/png">
 		<style>
 			body{ padding: clamp(64px, 10vh, 120px) clamp(24px, 6vw, 96px) 80px; }
@@ -17,12 +19,20 @@
 			.cards b{ display: block; font-size: 18px; font-weight: 400; }
 			.cards p{ margin-top: 8px; font-size: 14px; font-weight: 200; line-height: 1.5; }
 		</style>
+		<script src="../paper.js"></script>
 	</head>
 	<body>
 		<h1>Options to choose from</h1>
 		<p class="lede">Explorations for the home page and a new process page. They use the real data, photos and sketches. Pick one of each (or mix) and it gets built into the site.</p>
 
-		<h2>Home page</h2>
+		<h2>Home page: your two strip layouts (new)</h2>
+		<div class="cards">
+			<a href="home-d.html"><b>Layout 1 · Strips right</b><p>Text on the left, the 75 skies as horizontal bars on the right. Hover a bar to widen it.</p></a>
+			<a href="home-e.html"><b>Layout 2 · Strips left</b><p>The 75 skies as vertical strips with months, text on the right.</p></a>
+			<a href="../process/index.html"><b>New process page (live)</b><p>Scroll to move every sky from photo, to colors, to shape.</p></a>
+		</div>
+
+		<h2>Home page: first round</h2>
 		<div class="cards">
 			<a href="home-a.html"><b>A · Sky strips</b><p>The whole year as 75 thin gradient strips in date order. Hover a strip to see its photo, date and mood.</p></a>
 			<a href="home-b.html"><b>B · Full sky</b><p>The sky fills the screen and slowly changes. Press and hold to see the real photo behind it, from your notebook sketch.</p></a>
