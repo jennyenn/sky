@@ -54,19 +54,23 @@ h1{
 	left: 50%;
 	top: 60%;
 	transform: translate(-50%, -50%);
+	/* sits between the two color layers (see below), so it fades in
+	   on one color change and out on the next */
 	z-index: 1;
 	font-weight: 400;
 	font-size: max(10px, calc(1.9 * var(--u)));
 	letter-spacing: 0.02em;
-	color: rgba(40, 42, 43, 0.45);
+	color: rgba(40, 42, 43, 0.55);
 	white-space: nowrap;
 	pointer-events: none;
-	transition: color 2s ease-in-out;
 }
 
-/* Lighter label when the shape turns dark (set by script.js) */
-h1.on-dark{
-	color: rgba(255, 255, 255, 0.75);
+/* Layer order for every shape: bottom color, label, top color */
+.crazyshapes [class*="_bottom"]{
+	z-index: 0;
+}
+.crazyshapes [class*="_top"]{
+	z-index: 2;
 }
 
 /* Notes */
